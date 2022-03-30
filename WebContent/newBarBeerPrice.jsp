@@ -21,49 +21,21 @@
 		Statement stmt = con.createStatement();
 
 		//Get parameters from the HTML form at the index.jsp
-		String newBar = request.getParameter("bar");
-		String newBeer = request.getParameter("beer");
-		float price = Float.valueOf(request.getParameter("price"));
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 
-
-		//Make an insert statement for the Sells table:
-		String insert = "INSERT INTO bars(name)"
-				+ "VALUES (?)";
-		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		PreparedStatement ps = con.prepareStatement(insert);
-
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-		ps.setString(1, newBar);
-		ps.executeUpdate();
-
-		
-		//Make an insert statement for the Sells table:
-		insert = "INSERT INTO beers(name)"
-				+ "VALUES (?)";
-		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		ps = con.prepareStatement(insert);
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself		
-		ps.setString(1, newBeer);
-		ps.executeUpdate();
-
-		
-		//Make an insert statement for the Sells table:
-		insert = "INSERT INTO sells(bar, beer, price)"
-				+ "VALUES (?, ?, ?)";
-		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		ps = con.prepareStatement(insert);
-
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-		ps.setString(1, newBar);
-		ps.setString(2, newBeer);
-		ps.setFloat(3, price);
-		//Run the query against the DB
-		ps.executeUpdate();
-		//Run the query against the DB
+		String query = "select * from user where username = \"" + username + "\" and \"" + "password = " + password + "\"";
+        ResultSet result = stmt.executeQuery(query);
+        boolean inDb = result.next();
+        if(inDb) {
+    		out.print("Sign in succeeded!");
+        }
+        else{
+        	out.print("Sign in failed. The username or password you entered is not correct.");
+        }
 		
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
-		out.print("insert succeeded");
 		
 	} catch (Exception ex) {
 		out.print(ex);

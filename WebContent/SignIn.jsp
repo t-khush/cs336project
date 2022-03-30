@@ -42,6 +42,9 @@
 
 			out.print("Sign up succeeded!");
 			
+			
+			
+			
 		} catch (Exception ex) {
 			out.print(ex);
 			out.print("insert failed");

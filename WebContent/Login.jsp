@@ -16,17 +16,17 @@
 		<p style="font-size:30px"><strong> Login </strong></p>
 
 		<br></br>
-		
-		<table>
+		<form method="get" action="newBarBeerPrice.jsp">
+			<table>
 				<tr>    
-					<td>Username: </td><td><input type="text" name="barvalia"></td>
+					<td>Username: </td><td><input type="text" name="username"></td>
 				</tr>
 				<tr>
-					<td>Password: </td><td><input type="password" name="beer"></td>
+					<td>Password: </td><td><input type="password" name="password"></td>
 				</tr>
 			</table>
 			<input type="submit" value="Login">
-		</table>
+		</form>
 
 	
 </body></center>
