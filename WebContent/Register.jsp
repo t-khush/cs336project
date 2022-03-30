@@ -16,7 +16,7 @@
 			<p style="font-size:30px"><strong> Register </strong></p>
 
 			<br></br>
-			<form method="get" action="sellsNewBeer.jsp">
+			<form method="get" action="SignIn.jsp">
 			<table>
 				<tr>    
 					<td>New Username: </td><td><input type="text" name="new_username"></td>
