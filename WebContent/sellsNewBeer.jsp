@@ -7,47 +7,45 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Signed-up confirmation</title>
 </head>
 <body>
+
 	<%
-	try {
+		try {
 
-		//Get the database connection
-		ApplicationDB db = new ApplicationDB();	
-		Connection con = db.getConnection();
+			//Get the database connection
+			ApplicationDB db = new ApplicationDB();	
+			Connection con = db.getConnection();
+			
+			//Create a SQL statement
+			Statement stmt = con.createStatement();
+			
+			//Get parameters from the HTML form at the Register.jsp
+			String user = request.getParameter("new_username");
+			String pass = request.getParameter("new_password");
+			
 
-		//Create a SQL statement
-		Statement stmt = con.createStatement();
+			//Make an insert statement for the Sells table: 
+			String insert = "INSERT INTO user(username, password)"
+					+ "VALUES (?, ?)";
+			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+			PreparedStatement ps = con.prepareStatement(insert);
 
-		//Get parameters from the HTML form at the HelloWorld.jsp
-		String newBar = request.getParameter("barvalia");
-		String newBeer = request.getParameter("beer");
-		float price = Float.valueOf(request.getParameter("price"));
+			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+			ps.setString(1, user);
+			ps.setString(2, pass);
+			ps.executeUpdate();
+			
+			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
+			con.close();
 
-
-		//Make an insert statement for the Sells table:
-		String insert = "INSERT INTO sells(bar, beer, price)"
-				+ "VALUES (?, ?, ?)";
-		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		PreparedStatement ps = con.prepareStatement(insert);
-
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-		ps.setString(1, newBar);
-		ps.setString(2, newBeer);
-		ps.setFloat(3, price);
-		//Run the query against the DB
-		ps.executeUpdate();
-
-		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-		con.close();
-
-		out.print("Insert succeeded!");
-		
-	} catch (Exception ex) {
-		out.print(ex);
-		out.print("Insert failed :()");
-	}
-%>
+			out.print("Sign up succeeded!");
+			
+		} catch (Exception ex) {
+			out.print(ex);
+			out.print("insert failed");
+		}
+	%>
 </body>
 </html>
