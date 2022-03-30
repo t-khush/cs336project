@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Status</title>
 </head>
 <body>
 	<%
@@ -24,16 +24,18 @@
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		String query = "select * from user where username = \"" + username + "\" and \"" + "password = " + password + "\"";
+		String query = "select * from user where username = \"" + username + "\" and " + "password = \"" + password + "\"";
+		//out.println(query);
+		
         ResultSet result = stmt.executeQuery(query);
-        boolean inDb = result.next();
+        boolean inDb = result.first();
+       
         if(inDb) {
     		out.print("Sign in succeeded!");
         }
         else{
         	out.print("Sign in failed. The username or password you entered is not correct.");
         }
-		
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
 		
