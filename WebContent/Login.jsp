@@ -16,7 +16,7 @@
 		<p style="font-size:30px"><strong> Login </strong></p>
 
 		<br></br>
-		<form method="get" action="newBarBeerPrice.jsp">
+		<form method="get" action="LoginJava.jsp">
 			<table>
 				<tr>    
 					<td>Username: </td><td><input type="text" name="username"></td>
