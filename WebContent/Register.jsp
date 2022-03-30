@@ -13,10 +13,11 @@
 		
 		<center><body>
 		
+		
 			<p style="font-size:30px"><strong> Register </strong></p>
 
 			<br></br>
-			<form method="get" action="SignIn.jsp">
+			<form method="get" action="RegisterJava.jsp">
 			<table>
 				<tr>    
 					<td>New Username: </td><td><input type="text" name="new_username"></td>
@@ -28,7 +29,5 @@
 			<input type="submit" value="Register">
 		</form>
 	<br>
-		
-		
 	</body></center>
 	</html>

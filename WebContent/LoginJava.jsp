@@ -25,7 +25,6 @@
 		String password = request.getParameter("password");
 
 		String query = "select * from user where username = \"" + username + "\" and " + "password = \"" + password + "\"";
-		//out.println(query);
 		
         ResultSet result = stmt.executeQuery(query);
         boolean inDb = result.first();

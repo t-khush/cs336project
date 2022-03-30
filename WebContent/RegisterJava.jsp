@@ -7,11 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Signed-up confirmation</title>
+<title>Login Status</title>
 </head>
-<body>
-
-	<%
+<body>	
+		<%
 		try {
 
 			//Get the database connection
@@ -26,24 +25,33 @@
 			String pass = request.getParameter("new_password");
 			
 
-			//Make an insert statement for the Sells table: 
-			String insert = "INSERT INTO user(username, password)"
-					+ "VALUES (?, ?)";
-			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-			PreparedStatement ps = con.prepareStatement(insert);
+			String query = "select * from user where username = \"" + user + "\"";
+	        ResultSet result = stmt.executeQuery(query);
+	        boolean inDb = result.first();
+	        if(inDb) {
+	    		out.print("Username is already taken. Please try a different username.");
+	        }
+	        else if (!inDb){
+	        	if(user.trim().equals("") || pass.trim().equals("")){
+	        		out.print("Cannot have a blank username or password");
+	        	}
+	        	else{
+	        	//Make an insert statement for the Sells table: 
+				String insert = "INSERT INTO user(username, password)"
+						+ "VALUES (?, ?)";
+				//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+				PreparedStatement ps = con.prepareStatement(insert);
 
-			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-			ps.setString(1, user);
-			ps.setString(2, pass);
-			ps.executeUpdate();
-			
+				//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+				ps.setString(1, user);
+				ps.setString(2, pass);
+				ps.executeUpdate();
+	        	out.print("Sign up succeeded!");
+	        	}
+	        }
+				
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
-
-			out.print("Sign up succeeded!");
-			
-			
-			
 			
 		} catch (Exception ex) {
 			out.print(ex);
