@@ -9,7 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Status</title>
 </head>
-<body>	
+<center><body>	
+<br></br>
 		<%
 		try {
 
@@ -58,5 +59,9 @@
 			out.print("insert failed");
 		}
 	%>
-</body>
+	<br></br>
+	<form action="HelloWorld.jsp">
+			<input type="submit" value="Go back to main page">
+	</form>
+</body></center>
 </html>

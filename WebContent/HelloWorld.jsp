@@ -28,9 +28,9 @@
 		
 	
 	<form action="Login.jsp">
-		<input type="submit" style="height:200px;width:200px" value="Login">
+		<input type="submit" style="font-size:15px;height:200px;width:200px" value="Login">
 	</form>
-	
+	<br>
 	<!-- 
 	<br>
 		<form method="get" action="sellsNewBeer.jsp">
@@ -45,10 +45,10 @@
 			<input type="submit" value="Login">
 		</form>
 	<br> -->
-	<br></br>
 	or
-	<br></br>
-	<form action="Register.jsp"><input type="submit" style="height:200px;width:200px" value="Register"></form>
+	<br>
+	<br>
+	<form action="Register.jsp"><input type="submit" style="font-size:15px;height:200px;width:200px" value="Register"></form>
 	<!--
 	<br>
 		<form method="post" action="newBarBeerPrice.jsp">
