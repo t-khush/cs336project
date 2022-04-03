@@ -11,7 +11,7 @@
 </head>
 <center><body>
 	<br></br>
-	Sign-in Succeeded!
+	Sign-in succeeded!
 	<br></br>
 	<form action="HelloWorld.jsp">
 		<input type="submit" value="Logout">
