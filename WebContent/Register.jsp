@@ -25,6 +25,9 @@
 				<tr>
 					<td>New Password: </td><td><input type="password" name="new_password"></td>
 				</tr>
+				<tr>
+					<td>Confirm New Password: </td><td><input type="password" name="confirm_new_password"></td>
+				</tr>
 			</table>
 			<input type="submit" value="Register">
 		</form>
