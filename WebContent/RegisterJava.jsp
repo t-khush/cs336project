@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login Status</title>
+<title>BuyMe: Register</title>
 </head>
 <center><body>	
 <br></br>

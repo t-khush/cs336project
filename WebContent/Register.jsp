@@ -8,15 +8,14 @@
 	<html>
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-			<title>Register</title>
+			<title>BuyMe: Register</title>
 		</head>
 		
 		<center><body>
 		
-		
-			<p style="font-size:30px"><strong> Register </strong></p>
-
-			<br></br>
+			<p style="font-size:30px"><strong> BuyMe </strong></p>
+			<p style="font-size:20px"><strong> Register </strong></p>
+			<br>
 			<form method="get" action="RegisterJava.jsp">
 			<table>
 				<tr>    
@@ -26,7 +25,7 @@
 					<td>New Password: </td><td><input type="password" name="new_password"></td>
 				</tr>
 				<tr>
-					<td>Confirm New Password: </td><td><input type="password" name="confirm_new_password"></td>
+					<td>Confirm Password: </td><td><input type="password" name="confirm_new_password"></td>
 				</tr>
 			</table>
 			<input type="submit" value="Register">
