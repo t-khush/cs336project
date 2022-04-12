@@ -10,10 +10,8 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 			<title>BuyMe: Register</title>
 		</head>
-		
+		<h1 style="font-size:30px"><strong> BuyMe </strong></h1>
 		<center><body>
-		
-			<p style="font-size:30px"><strong> BuyMe </strong></p>
 			<p style="font-size:20px"><strong> Register </strong></p>
 			<br>
 			<form method="get" action="RegisterJava.jsp">
