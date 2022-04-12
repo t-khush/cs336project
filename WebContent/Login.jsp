@@ -10,7 +10,12 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>BuyMe: Login</title>
 	</head>
-	<h1 style="font-size:30px"><strong> BuyMe </strong></h1>
+	
+	<style>
+		h1 {margin-top: 0px;}
+	</style>
+	<div class="h1"><h1 style="font-size:30px"><strong> BuyMe </strong></h1></div>
+	
 	<center><body>
 		<p style="font-size:20px"><strong> Login </strong></p>
 		<br>
