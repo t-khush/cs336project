@@ -12,7 +12,8 @@
 <style>
 		h1 {margin-top: 0px;}
 		a:link {color: black; text-decoration: none;}
-		a:hover{color: black; text-decoration: underline;}
+		a:visited {color: black; text-decoration: none;}
+		a:hover {color: black; text-decoration: underline;}
 	</style>
 	<div class="h1"><h1 style="font-size:28px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
@@ -29,8 +30,8 @@
 <p>
    <textarea name="item_desc" id="item_desc" style="height: 100px; width: 250px;" placeholder="Item Description (max. 300 characters)"></textarea>
 </p>
-<input type="init_bid" id="init_bid" name="init_bid" placeholder="Starting Bid Price">
-<input type="bid_inc" id="bid_inc" name="bid_inc" placeholder="Bid Increment Amount">
+<input type="init_bid" id="init_bid" name="init_bid" placeholder="Starting Bid Price (without $ sign)" style="height: 20px; width: 210px">
+<input type="bid_inc" id="bid_inc" name="bid_inc" placeholder="Bid Increment Amount (without $ sign)" style="height: 20px; width: 210px">
 <br><br>
 Auction End Date & Time: <input type="datetime-local" id="dur_auction" name="dur_auction"/>
 <br></br>

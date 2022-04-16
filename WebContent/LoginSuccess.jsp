@@ -12,6 +12,7 @@
 <style>
 		h1 {margin-top: 0px;}
 		a:link {color: black; text-decoration: none;}
+		a:visited {color: black; text-decoration: none;}
 		a:hover{color: black; text-decoration: underline;}
 	</style>
 	<div class="h1"><h1 style="font-size:28px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
@@ -41,17 +42,17 @@
 %>
 	<br><br><br>
 	<form action="AuctionList.jsp">
-		<input type="submit" value="Buy">
+		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Buy">
 	</form> 
 	<br>
 	or      
 	<br><br>
 	<form action="SellerForm.jsp">
-		<input type="submit" value="Sell">
+		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Sell">
 	</form>
 	<br></br><br></br><br></br><br></br>
 	<form action="Home.jsp">
-		<input type="submit" value="Logout">
+		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Logout">
 	</form>
 
 </body></center>
