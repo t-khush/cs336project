@@ -30,6 +30,8 @@ CREATE TABLE `items` (
   `username` varchar(30) DEFAULT NULL,
   `starting_bid` float DEFAULT NULL,
   `bid_increment` float DEFAULT NULL,
+  `posting_date` datetime DEFAULT NULL,
+  `sell_by_date` datetime DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `username` (`username`),
   CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
@@ -78,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-16 16:38:10
+-- Dump completed on 2022-04-16 17:40:24
