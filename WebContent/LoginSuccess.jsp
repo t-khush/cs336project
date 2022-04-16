@@ -10,6 +10,7 @@
 <title>BuyMe: Login Success</title>
 </head>
 <center><body>
+	<br>
 	<%
 	try {
 		
@@ -35,9 +36,10 @@
 	<br><br><br>
 	<form action="AuctionList.jsp">
 		<input type="submit" value="Buy">
-	</form>
+	</form> 
+	<br>
+	or      
 	<br> 
-	or <br></br>      
 	<form action="SellerForm.jsp">
 		<input type="submit" value="Sell">
 	</form>

@@ -28,7 +28,7 @@
 		
 	
 	<form action="Login.jsp">
-		<input type="submit" style="font-size:15px;height:200px;width:200px" value="Login">
+		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Login">
 	</form>
 	<br>
 	<!-- 
