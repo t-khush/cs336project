@@ -17,8 +17,8 @@
 			a:hover{color: black; text-decoration: underline;}
 		</style>
 		
-		<div class="h1"><h1 style="font-size:28px"><strong> <a href="HelloWorld.jsp"> BuyMe </a> </strong></h1></div>
-		
+		<div class="h1"><h1 style="font-size:28px"><strong> <a href="Home.jsp"> BuyMe </a> </strong></h1></div>
+	
 		<center><body>
 			<p style="font-size:20px"><strong> Register </strong></p>
 			<br>
