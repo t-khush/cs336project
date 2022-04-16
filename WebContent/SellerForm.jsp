@@ -18,7 +18,6 @@
 <center><body>	
 <p style="font-size:20px"><strong> Sell an Item</strong></p>
 <form action="SellerFormSuccess.jsp">
-
 <select name = "category">
     <option value="" disabled="disabled" selected="selected">Select a category</option>
     <option value="phone" name = "phone">Phone</option>
@@ -32,6 +31,8 @@
 </p>
 <input type="init_bid" id="init_bid" name="init_bid" placeholder="Starting Bid Price">
 <input type="bid_inc" id="bid_inc" name="bid_inc" placeholder="Bid Increment Amount">
+<br><br>
+Auction End Date & Time: <input type="datetime-local" id="dur_auction" name="dur_auction"/>
 <br></br>
 <input type="submit" value="Place Item on Auction">
 </form>
