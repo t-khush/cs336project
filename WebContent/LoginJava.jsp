@@ -24,6 +24,7 @@
 		//Get parameters from the HTML form at the index.jsp
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		request.getSession().setAttribute("username", username);
 
 		String query = "select * from user where username = \"" + username + "\" and " + "password = \"" + password + "\"";
 		

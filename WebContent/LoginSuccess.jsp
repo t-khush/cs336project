@@ -10,12 +10,6 @@
 <title>BuyMe: Login Success</title>
 </head>
 <center><body>
-	<br></br>
-	Sign-in succeeded!
-	<br></br>
-	<form action="HelloWorld.jsp">
-		<input type="submit" value="Logout">
-	</form>
 	<%
 	try {
 		
@@ -25,24 +19,10 @@
 
 		//Create a SQL statement
 		Statement stmt = con.createStatement();
-		
-		/*
-		//Get parameters from the HTML form at the index.jsp
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
 
-		String query = "select * from user where username = \"" + username + "\" and " + "password = \"" + password + "\"";
-		
-        ResultSet result = stmt.executeQuery(query);
-        boolean inDb = result.first();
-       
-        if(inDb) {
-    		out.print("Sign in succeeded!");
-        }
-        else{
-        	out.print("Sign in failed. The username or password you entered is not correct.");
-        }
-        */
+		//Get parameters from the HTML form at the index.jsp
+		String username = (String)request.getSession().getAttribute("username");
+		out.print("Welcome to BuyMe, " + username + "!");
         
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
@@ -52,6 +32,19 @@
 		out.print("insert failed");
 	}
 %>
+	<br><br><br>
+	<form action="AuctionList.jsp">
+		<input type="submit" value="Buy">
+	</form>
+	<br> 
+	or <br></br>      
+	<form action="SellerForm.jsp">
+		<input type="submit" value="Sell">
+	</form>
+	<br></br><br></br><br></br><br></br>
+	<form action="HelloWorld.jsp">
+		<input type="submit" value="Logout">
+	</form>
 
 </body></center>
 </html>
