@@ -47,7 +47,5 @@
 		out.print("query failed");
 	}
 %>
-
-	</form>
 </body></center>
 </html>

@@ -17,45 +17,23 @@
 	<div class="h1"><h1 style="font-size:28px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
 <p style="font-size:20px"><strong> Sell an Item</strong></p>
-<select>
+<form action="SellerFormSuccess.jsp">
+
+<select name = "category">
     <option value="" disabled="disabled" selected="selected">Select a category</option>
-    <option value="phone">Phone</option>
-    <option value="tablet">Tablet</option>
-    <option value="laptop">Laptop</option>
+    <option value="phone" name = "phone">Phone</option>
+    <option value="tablet" name = "tablet">Tablet</option>
+    <option value="laptop" name = "laptop">Laptop</option>
 </select>
 <br><br>
 <input type="item_name" id="item_name" name="item_name" placeholder="Item Name">
 <p>
-   <textarea name="item_desc" id="item_desc" style="height: 100px; width: 250px;" placeholder="Item Description"></textarea>
+   <textarea name="item_desc" id="item_desc" style="height: 100px; width: 250px;" placeholder="Item Description (max. 300 characters)"></textarea>
 </p>
 <input type="init_bid" id="init_bid" name="init_bid" placeholder="Starting Bid Price">
 <input type="bid_inc" id="bid_inc" name="bid_inc" placeholder="Bid Increment Amount">
-
-
-		<%
-		try {
-
-			//Get the database connection
-			ApplicationDB db = new ApplicationDB();	
-			Connection con = db.getConnection();
-			
-			//Create a SQL statement
-			Statement stmt = con.createStatement();
-			
-			
-			
-				
-			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-			con.close();
-			
-		} catch (Exception ex) {
-			out.print(ex);
-			out.print("insert failed");
-		}
-	%>
-	<br></br>
-	<form action="SellerFormSuccess.jsp">
-			<input type="submit" value="Place Item on Auction">
-	</form>
+<br></br>
+<input type="submit" value="Place Item on Auction">
+</form>
 </body></center>
 </html>
