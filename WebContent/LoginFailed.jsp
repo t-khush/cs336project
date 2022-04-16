@@ -14,14 +14,11 @@
 		a:link {color: black; text-decoration: none;}
 		a:hover{color: black; text-decoration: underline;}
 	</style>
-	<div class="h1"><h1 style="font-size:28px"><strong> <a href="HelloWorld.jsp"> BuyMe </a> </strong></h1></div>
+	<div class="h1"><h1 style="font-size:28px"><strong> <a href="Home.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>
 	<br></br>
 	Sign-in Failed. The username or password you entered is not correct. Please try again!
 	<br></br>
-	<form action="Home.jsp">
-		<input type="submit" value="Go to back to main page">
-	</form>
 	<%
 	try {
 		
