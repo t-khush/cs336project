@@ -9,8 +9,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>BuyMe: Sell</title>
 </head>
+<style>
+		h1 {margin-top: 0px;}
+		a:link {color: black; text-decoration: none;}
+		a:hover{color: black; text-decoration: underline;}
+	</style>
+	<div class="h1"><h1 style="font-size:28px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
-<br></br>
+<p style="font-size:20px"><strong> Sell an Item</strong></p>
+<select>
+    <option value="" disabled="disabled" selected="selected">Select a category</option>
+    <option value="phone">Phone</option>
+    <option value="tablet">Tablet</option>
+    <option value="laptop">Laptop</option>
+</select>
+<br><br>
+<input type="item_name" id="item_name" name="item_name" placeholder="Item Name">
+<p>
+   <textarea name="item_desc" id="item_desc" style="height: 100px; width: 250px;" placeholder="Item Description"></textarea>
+</p>
+<input type="init_bid" id="init_bid" name="init_bid" placeholder="Starting Bid Price">
+<input type="bid_inc" id="bid_inc" name="bid_inc" placeholder="Bid Increment Amount">
+
+
 		<%
 		try {
 
@@ -21,39 +42,7 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
-			//Get parameters from the HTML form at the Register.jsp
-			String user = request.getParameter("new_username");
-			String pass = request.getParameter("new_password");
-			String confirmPass = request.getParameter("confirm_new_password");
-			if (!pass.equals(confirmPass)) {
-				out.println("Passwords don't match");
-			}
-			else {
-				String query = "select * from user where username = \"" + user + "\"";
-		        ResultSet result = stmt.executeQuery(query);
-		        boolean inDb = result.first();
-		        if(inDb) {
-		    		out.print("Username is already taken. Please try a different username.");
-		        }
-		        else if (!inDb){
-		        	if(user.trim().equals("") || pass.trim().equals("")){
-		        		out.print("Cannot have a blank username or password");
-		        	}
-		        	else {
-		        	//Make an insert statement for the Sells table: 
-					String insert = "INSERT INTO user(username, password)"
-							+ "VALUES (?, ?)";
-					//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-					PreparedStatement ps = con.prepareStatement(insert);
-
-					//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-					ps.setString(1, user);
-					ps.setString(2, pass);
-					ps.executeUpdate();
-		        	out.print("Sign up succeeded!");
-		        	}
-		        }
-			}
+			
 			
 				
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
@@ -65,8 +54,8 @@
 		}
 	%>
 	<br></br>
-	<form action="Home.jsp">
-			<input type="submit" value="Go back to main page">
+	<form action="SellerFormSuccess.jsp">
+			<input type="submit" value="Place Item on Auction">
 	</form>
 </body></center>
 </html>
