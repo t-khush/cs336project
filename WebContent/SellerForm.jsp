@@ -65,7 +65,7 @@
 		}
 	%>
 	<br></br>
-	<form action="HelloWorld.jsp">
+	<form action="Home.jsp">
 			<input type="submit" value="Go back to main page">
 	</form>
 </body></center>

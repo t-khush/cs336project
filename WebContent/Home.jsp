@@ -48,7 +48,7 @@
 	or
 	<br>
 	<br>
-	<form action="Register.jsp"><input type="submit" style="font-size:15px;height:200px;width:200px" value="Register"></form>
+	<form action="Register.jsp"><input type="submit" style="font-size:15px;height:30px;width:200px" value="Register"></form>
 	<!--
 	<br>
 		<form method="post" action="newBarBeerPrice.jsp">

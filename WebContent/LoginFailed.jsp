@@ -13,7 +13,7 @@
 	<br></br>
 	Sign-in Failed. The username or password you entered is not correct. Please try again!
 	<br></br>
-	<form action="HelloWorld.jsp">
+	<form action="Home.jsp">
 		<input type="submit" value="Go to back to main page">
 	</form>
 	<%

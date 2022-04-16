@@ -44,7 +44,7 @@
 		<input type="submit" value="Sell">
 	</form>
 	<br></br><br></br><br></br><br></br>
-	<form action="HelloWorld.jsp">
+	<form action="Home.jsp">
 		<input type="submit" value="Logout">
 	</form>
 
