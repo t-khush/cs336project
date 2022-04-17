@@ -7,20 +7,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>BuyMe: Auction List</title>
+<title>BuyMe: Buy</title>
 </head>
 <style>
-		h1 {margin-top: 0px; font-size:28px;}
-		a {font-weight: bold;}
-		a:link { color: black; text-decoration: none;}
+		h1 {margin-top: 0px;}
+		a:link {color: black; text-decoration: none;}
 		a:visited {color: black; text-decoration: none;}
 		a:hover {color: black; text-decoration: underline;}
-	</style>
-	<div class="h1"><h1><a href="LoginSuccess.jsp"> BuyMe </a></h1></div>
+</style>
+	<div class="h1"><h1 style="font-size:50px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
-<p style="font-size:20px"><strong> Auction List</strong></p>
-<br>
-		<%
+	<%
 		try {
 
 			//Get the database connection
@@ -30,34 +27,20 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
+			//Get parameters from the HTML form at the index.jsp
+			int num = Integer.parseInt(request.getParameter("num").toString());
+			String itemname = (String)request.getSession().getAttribute("selectedItem"+num);
 			
-			String query = "select name from items";
-	        ResultSet result = stmt.executeQuery(query);
-	        //ResultSetMetaData metaData = result.getMetaData();
-	        
-	        int i = 1;
-	        out.println("<form action='BuyPage.jsp'>");
-	        while(result.next()) {
-	        	
-	        	out.println("<a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a>");
-	        	request.getSession().setAttribute("selectedItem"+i, result.getString(1));
-	        	
-	        	out.println("<br>");
-	        	i++;
-	        }
-	        out.println("</form>");
+			out.println("<h3 style='font-size:25px'><strong>" + itemname + "</strong></h3>");
+			out.println("<br>");
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			
-			
 		} catch (Exception ex) {
 			out.print(ex);
-			out.print("insert failed");
+			
 		}
-	%>
-	<br></br>
-	<form action="LoginSuccess.jsp">
-		<input type="submit" value="Go back to main page">
-	</form>
+%>
+
 </body></center>
 </html>

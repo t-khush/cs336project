@@ -47,7 +47,7 @@
         }
         */
         
-		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
+		//Close the connection. Don't forget to do it, otherwise you're keeping thes resources of the server allocated.
 		con.close();
 		
 	} catch (Exception ex) {
@@ -55,6 +55,10 @@
 		out.print("insert failed");
 	}
 %>
+<br></br>
+<form action="LoginSuccess.jsp">
+		<input type="submit" value="Go back to main page">
+</form>
 
 </body></center>
 </html>

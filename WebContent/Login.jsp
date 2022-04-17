@@ -16,11 +16,10 @@
 		a:link {color: black; text-decoration: none;}
 		a:hover{color: black; text-decoration: underline;}
 	</style>
-	<div class="h1"><h1 style="font-size:28px"><strong> <a href="Home.jsp"> BuyMe </a> </strong></h1></div>
+	<div class="h1"><h1 style="font-size:30px"><strong> <a href="Home.jsp"> BuyMe </a> </strong></h1></div>
 	
 	<center><body>
-		<p style="font-size:20px"><strong> Login </strong></p>
-		<br>
+		<h3 style="font-size:25px"><strong> Login </strong></h3>
 		<form method="get" action="LoginJava.jsp">
 			<table>
 				<tr>    
