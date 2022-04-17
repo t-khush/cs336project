@@ -10,16 +10,18 @@
 <title>BuyMe: Auction List</title>
 </head>
 <style>
-		h1 {margin-top: 0px; font-size:28px;}
-		a {font-weight: bold;}
+		h1 {margin-top: 0px; font-size:30px;}
 		a:link { color: black; text-decoration: none;}
 		a:visited {color: black; text-decoration: none;}
 		a:hover {color: black; text-decoration: underline;}
+		table {border-collapse: collapse; width: 60%}
+		td,th { border: 1px solid #dddddd; text-align: center; padding: 11px;}
+		tr:nth-child(even) { background-color: #dddddd;}
 	</style>
 	<div class="h1"><h1><a href="LoginSuccess.jsp"> BuyMe </a></h1></div>
 <center><body>	
-<p style="font-size:20px"><strong> Auction List</strong></p>
-<br>
+<h1 style="font-size:25px"><strong> Auction List</strong></h1>
+<br></br>
 		<%
 		try {
 
@@ -35,16 +37,28 @@
 	        ResultSet result = stmt.executeQuery(query);
 	        //ResultSetMetaData metaData = result.getMetaData();
 	        
-	        int i = 1;
 	        out.println("<form action='BuyPage.jsp'>");
+	        out.println("<table>");
+	        out.println("<tr>");
+	        out.println("<th><strong><u><big>Items</big></u></strong></th>");
+    		out.println("</tr>");
+	        int i = 1;
 	        while(result.next()) {
-	        	
-	        	out.println("<a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a>");
-	        	request.getSession().setAttribute("selectedItem"+i, result.getString(1));
-	        	
-	        	out.println("<br>");
+	        	if (i % 2 != 0) {
+	        		out.println("<tr>");
+	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
+		        	request.getSession().setAttribute("selectedItem"+i, result.getString(1));
+	        		out.println("</tr>");
+	        	}
+	        	else {
+	        		out.println("<tr>");
+	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
+		        	request.getSession().setAttribute("selectedItem"+i, result.getString(1));
+	        		out.println("</tr>");
+	        	}
 	        	i++;
 	        }
+	        out.println("<table>");
 	        out.println("</form>");
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();

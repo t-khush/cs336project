@@ -15,7 +15,7 @@
 		a:visited {color: black; text-decoration: none;}
 		a:hover{color: black; text-decoration: underline;}
 	</style>
-	<div class="h1"><h1 style="font-size:28px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
+	<div class="h1"><h1 style="font-size:30px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>
 	<br>
 	<%
