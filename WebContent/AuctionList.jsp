@@ -15,7 +15,7 @@
 		a:visited {color: black; text-decoration: none;}
 		a:hover {color: black; text-decoration: underline;}
 		table {border-collapse: collapse; width: 60%}
-		td,th { border: 1px solid #dddddd; text-align: center; padding: 11px;}
+		td { border: 1px solid #dddddd; text-align: center; padding: 11px;}
 		tr:nth-child(even) { background-color: #dddddd;}
 	</style>
 	<div class="h1"><h1><a href="LoginSuccess.jsp"> BuyMe </a></h1></div>
@@ -40,7 +40,7 @@
 	        out.println("<form action='BuyPage.jsp'>");
 	        out.println("<table>");
 	        out.println("<tr>");
-	        out.println("<th><strong><u><big>Items</big></u></strong></th>");
+	        out.println("<td><strong><u><big>Items</big></u></strong></td>");
     		out.println("</tr>");
 	        int i = 1;
 	        while(result.next()) {
