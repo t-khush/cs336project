@@ -39,27 +39,36 @@
 	        
 	        out.println("<form action='BuyPage.jsp'>");
 	        out.println("<table>");
-	        out.println("<tr>");
-	        out.println("<td><strong><u><big>Items</big></u></strong></td>");
-    		out.println("</tr>");
-	        int i = 1;
-	        while(result.next()) {
-	        	if (i % 2 != 0) {
-	        		out.println("<tr>");
-	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
-		        	request.getSession().setAttribute("selectedItem"+i, result.getString(1));
-	        		out.println("</tr>");
-	        	}
-	        	else {
-	        		out.println("<tr>");
-	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
-		        	request.getSession().setAttribute("selectedItem"+i, result.getString(1));
-	        		out.println("</tr>");
-	        	}
-	        	i++;
-	        }
-	        out.println("<table>");
-	        out.println("</form>");
+	        
+    		int size= 0;  
+    		if (!result.next()) {  
+    		  out.println("<h3 style='font-size:25px'><strong> No Items for Auction Yet!</strong></h3>");
+    		}
+    		else {
+    			out.println("<tr>");
+    	        out.println("<td><strong><u><big>Items</big></u></strong></td>");
+        		out.println("</tr>");
+        		int i = 1;
+        		result.beforeFirst();
+    	        while(result.next()) {
+    	        	if (i % 2 != 0) {
+    	        		out.println("<tr>");
+    	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
+    		        	request.getSession().setAttribute("selectedItem"+i, result.getString(1));
+    	        		out.println("</tr>");
+    	        	}
+    	        	else {
+    	        		out.println("<tr>");
+    	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
+    		        	request.getSession().setAttribute("selectedItem"+i, result.getString(1));
+    	        		out.println("</tr>");
+    	        	}
+    	        	i++;
+    	        }
+    	        out.println("<table>");
+    	        out.println("</form>");
+    		}
+	        
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			

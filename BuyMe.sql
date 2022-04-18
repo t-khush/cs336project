@@ -28,9 +28,9 @@ CREATE TABLE `items` (
   `type` varchar(30) DEFAULT NULL,
   `description` varchar(300) DEFAULT NULL,
   `username` varchar(30) DEFAULT NULL,
-  `starting_bid` float DEFAULT NULL,
-  `bid_increment` float DEFAULT NULL,
-  `posting_date` datetime DEFAULT NULL,
+  `starting_bid` float(15,2) DEFAULT NULL,
+  `bid_increment` float(15,2) DEFAULT NULL,
+  `current_price` float(15,2) DEFAULT NULL,
   `sell_by_date` datetime DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `username` (`username`),
@@ -81,3 +81,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-04-16 17:40:24
+
+select * from items;

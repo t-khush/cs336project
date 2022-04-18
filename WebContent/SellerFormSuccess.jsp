@@ -38,8 +38,8 @@
 			String durAuction = request.getParameter("dur_auction");
 			 
 			//Make an insert statement for the Sells table: 
-			String insert = "INSERT INTO items(name, type, description, username, starting_bid, bid_increment, sell_by_date)"
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String insert = "INSERT INTO items(name, type, description, username, starting_bid, bid_increment, current_price, sell_by_date)"
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(insert);
 
@@ -50,7 +50,8 @@
 			ps.setString(4, username);
 			ps.setString(5, initBid);
 			ps.setString(6, bidInc);
-			ps.setString(7, durAuction);
+			ps.setString(7, initBid);
+			ps.setString(8, durAuction);
 			ps.executeUpdate();
 			out.print("Item set for auction!");
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
@@ -61,6 +62,7 @@
 			out.print("insert failed");
 		}
 %>
+<br></br>
 <form action="AuctionList.jsp">
 		<input type="submit" value="Go to Auction List">
 	</form>
