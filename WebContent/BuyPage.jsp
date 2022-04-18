@@ -34,14 +34,14 @@
 			int num = Integer.parseInt(request.getParameter("num").toString());
 			String itemname = (String)request.getSession().getAttribute("selectedItem"+num);
 			String username = (String)request.getSession().getAttribute("username");
-			
-			String query = "select * from items where name = \"" + itemname + "\"";
+			System.out.println("item_id " + itemname); 
+			String query = "select * from items where item_id = \"" + itemname + "\"";
 			//out.println(query);
 			ResultSet result = stmt.executeQuery(query);
 			ResultSetMetaData resultMetaData = result.getMetaData();
 			result.next();
-			
-			out.println("<h1 style='font-size:30px'><strong>" + itemname + "</strong></h1>");
+
+			out.println("<h1 style='font-size:30px'><strong>" + result.getString(2) + "</strong></h1>");
 			//out.println("<br>");
 			out.println("<h3 style='font-size:22px'><strong> Current Price: $" + result.getString(8) + "</strong></h3>");
 			
@@ -62,7 +62,7 @@
 	        out.println("</tr>");
 	        
 	        out.println("<tr>");
-	        out.println("<td><strong> Category: </strong></td><td><p>" + result.getString(3)+"</p></td>");
+	        out.println("<td><strong> Category </strong></td><td><p>" + result.getString(3)+"</p></td>");
 	        out.println("</tr>");
 	        
 	        out.println("<tr>");
