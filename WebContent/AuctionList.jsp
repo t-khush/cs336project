@@ -54,13 +54,13 @@
     	        	if (i % 2 != 0) {
     	        		out.println("<tr>");
     	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
-    		        	request.getSession().setAttribute("selectedItem"+i, result.getString(2));
+    		        	request.getSession().setAttribute("selectedItemID"+i, result.getString(2));
     	        		out.println("</tr>");
     	        	}
     	        	else {
     	        		out.println("<tr>");
     	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
-    		        	request.getSession().setAttribute("selectedItem"+i, result.getString(2));
+    		        	request.getSession().setAttribute("selectedItemID"+i, result.getString(2));
     	        		out.println("</tr>");
     	        	}
     	        	i++;

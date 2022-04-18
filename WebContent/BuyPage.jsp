@@ -32,10 +32,10 @@
 			
 			//Get parameters from the HTML form at the index.jsp
 			int num = Integer.parseInt(request.getParameter("num").toString());
-			String itemname = (String)request.getSession().getAttribute("selectedItem"+num);
+			String itemid = (String)request.getSession().getAttribute("selectedItemID"+num);
 			String username = (String)request.getSession().getAttribute("username");
-			System.out.println("item_id " + itemname); 
-			String query = "select * from items where item_id = \"" + itemname + "\"";
+			//System.out.println("item_id " + itemname); 
+			String query = "select * from items where item_id = \"" + itemid + "\"";
 			//out.println(query);
 			ResultSet result = stmt.executeQuery(query);
 			ResultSetMetaData resultMetaData = result.getMetaData();
