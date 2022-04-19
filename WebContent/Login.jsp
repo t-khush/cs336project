@@ -29,7 +29,8 @@
 					<td>Password: </td><td><input type="password" name="password"></td>
 				</tr>
 			</table>
-			<input type="submit" value="Login">
+			<br>
+			<input type="submit" style="font-size:15px;height:30px;width:100px" value="Login">
 		</form>
 
 	

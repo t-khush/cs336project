@@ -35,7 +35,7 @@
 <br><br>
 Auction End Date & Time: <input type="datetime-local" id="dur_auction" name="dur_auction"/>
 <br></br>
-<input type="submit" value="Place Item on Auction">
+<input type="submit" style="font-size:15px;height:30px;width:200px" value="Place Item on Auction">
 </form>
 </body></center>
 </html>

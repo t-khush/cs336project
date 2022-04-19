@@ -34,7 +34,8 @@
 					<td>Confirm Password: </td><td><input type="password" name="confirm_new_password"></td>
 				</tr>
 			</table>
-			<input type="submit" value="Register">
+			<br>
+			<input type="submit" style="font-size:15px;height:30px;width:100px" value="Register">
 		</form>
 	<br>
 	</body></center>

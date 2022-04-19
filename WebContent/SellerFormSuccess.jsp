@@ -64,7 +64,7 @@
 %>
 <br></br>
 <form action="AuctionList.jsp">
-		<input type="submit" value="Go to Auction List">
+		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Go to Auction List">
 	</form>
 </body></center>
 </html>

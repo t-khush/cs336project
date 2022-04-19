@@ -78,9 +78,13 @@
 			out.print("insert failed");
 		}
 	%>
-	<br></br>
 	<form action="LoginSuccess.jsp">
-		<input type="submit" value="Go back to main page">
+		<input type="hidden" style="font-size:15px;height:30px;width:200px" value="Go back to main page">
 	</form>
+<br><br>
+	<form action="LoginSuccess.jsp">
+		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Go back to main page">
+	</form>
+<br></br>
 </body></center>
 </html>

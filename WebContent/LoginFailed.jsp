@@ -56,8 +56,8 @@
 	}
 %>
 <br></br>
-<form action="LoginSuccess.jsp">
-		<input type="submit" value="Go back to main page">
+<form action="Home.jsp">
+		<input type="submit" style="font-size:15px;height:30px;width:150px" value="Go back to main page">
 </form>
 
 </body></center>
