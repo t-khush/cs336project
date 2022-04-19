@@ -45,11 +45,18 @@
 			//out.println("<br>");
 			out.println("<h3 style='font-size:22px'><strong> Current Price: $" + result.getString(8) + "</strong></h3>");
 			
-			out.println("<form action='BidPage.jsp'>");
-			out.println("<input type='submit' style='font-size:15px;height:30px;width:100px' value='Place Bid'>");
+			// Place Manual Bid Button
+			out.println("<form action='ManualBidPage.jsp'>");
+			out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
 			out.println("</form>");
 			out.println("<br>");
+
 			
+			// Place Automatic Bid Button
+			out.println("<form action='AutomaticBidPage.jsp'>");
+			out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Automatic Bid'>");
+			out.println("</form>");
+			out.println("<br>");
 			
 			// ITEM DETAILS
 			out.println("<table>");
