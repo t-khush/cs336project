@@ -72,7 +72,7 @@
 		}
 	%>
 	<br></br>
-	<form action="LoginSuccess.jsp">
+	<form action="Home.jsp">
 		<input type="submit" value="Go back to main page">
 	</form>
 </body></center>
