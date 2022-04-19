@@ -49,23 +49,29 @@
 			request.getSession().setAttribute("bidInc", result.getString(7));
 			request.getSession().setAttribute("seller", result.getString(5));
 
+			String seller = request.getSession().getAttribute("seller").toString();
+			
+			
 			out.println("<h1 style='font-size:30px'><strong>" + result.getString(2) + "</strong></h1>");
 			out.println("<h3 style='font-size:22px'><strong> Current Price: $" + result.getString(8) + "</strong></h3>");
 			
-			// Place Manual Bid Button
-            out.println("<div class='button-container'>");
-            out.println("<form style='text:align=center' action='ManualBidPage.jsp'>");
-            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
-            out.println("</form>");
+			if (!seller.equals(username)) {
+				// Place Manual Bid Button
+	            out.println("<div class='button-container'>");
+	            out.println("<form style='text:align=center' action='ManualBidPage.jsp'>");
+	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
+	            out.println("</form>");
 
-            
-            // Place Automatic Bid Button
-            out.println("<form style='text:align=center' action='AutomaticBidPage.jsp'>");
-            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Automatic Bid'>");
-            out.println("</form>");
-            out.println("</div>");
-            out.println("<br>");
+	            
+	            // Place Automatic Bid Button
+	            out.println("<form style='text:align=center' action='AutomaticBidPage.jsp'>");
+	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Automatic Bid'>");
+	            out.println("</form>");
+	            out.println("</div>");
+				
+			}
 			
+			out.println("<br>");
 			// ITEM DETAILS
 			out.println("<table>");
 			out.println("<tr>");

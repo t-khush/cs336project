@@ -27,18 +27,12 @@
 		String itemNum = (String)request.getSession().getAttribute("itemNum");
 		String itemName = request.getSession().getAttribute("selectedItemName" + itemNum).toString();
 		String seller = request.getSession().getAttribute("seller").toString();
-		String user = request.getSession().getAttribute("username").toString();
+		//String user = request.getSession().getAttribute("username").toString();
 		
 		if(Float.parseFloat(manBid) < Float.parseFloat(currBid)){
 			out.println("Cannot place a bid lower than the current highest bid.");
 			out.println("<a href='ManualBidPage.jsp'>");
 			out.println("<br><br><input type='button' value='Back'/>");
-			out.println("</a>");
-		}
-		else if (seller.equals(user)) {
-			out.println("You're selling this item. You can't bid on it!");
-			out.println("<a href='BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString() + "'>");
-			out.println("<br><br><input type='button' value='Back to Item'/>");
 			out.println("</a>");
 		}
 		else if(Float.parseFloat(manBid) - Float.parseFloat(currBid) < Float.parseFloat(bidInc)){
