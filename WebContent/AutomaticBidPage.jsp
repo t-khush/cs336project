@@ -17,7 +17,7 @@
 	</style>
 	<div class="h1"><h1 style="font-size:30px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
-<p style="font-size:20px"><strong> Automatic Bid on an Item</strong></p>
+<p style="font-size:20px"><strong> Automatic Bid on <%out.println(request.getSession().getAttribute("selectedItemName"+ request.getSession().getAttribute("itemNum").toString()));%> </strong></p>
 <input type="init_bid" id="init_bid" name="init_bid" placeholder="Place a Bid (without $ sign)" style="height: 20px; width: 230px">
 <br></br>
 <input type="submit" value="Place Automatic Bid">

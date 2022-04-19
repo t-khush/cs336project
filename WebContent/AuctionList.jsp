@@ -57,7 +57,6 @@
     	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
     		        	request.getSession().setAttribute("selectedItemID"+i, result.getString(2));
     			        request.getSession().setAttribute("selectedItemName"+i, result.getString(1));
-    			        request.getSession().setAttribute("num"+i, i);
     	        		out.println("</tr>");
     	        	}
     	        	else {
@@ -65,7 +64,6 @@
     	        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'>" + result.getString(1) + "</a></td>");
     		        	request.getSession().setAttribute("selectedItemID"+i, result.getString(2));
     			        request.getSession().setAttribute("selectedItemName"+i, result.getString(1));
-    			        request.getSession().setAttribute("num"+i, i);
     	        		out.println("</tr>");
     	        	}
     	        	i++;

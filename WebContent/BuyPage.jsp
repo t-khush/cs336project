@@ -33,8 +33,11 @@
 			Statement stmt = con.createStatement();
 			
 			//Get parameters from the HTML form at the index.jsp
-			int num = Integer.parseInt(request.getParameter("num").toString());
+			String num = request.getParameter("num").toString();
+			request.getSession().setAttribute("itemNum", num);
+			
 			String itemid = (String)request.getSession().getAttribute("selectedItemID" + num);
+			String itemName = (String)request.getSession().getAttribute("selectedItemName"+num);
 			String username = (String)request.getSession().getAttribute("username");
 
 			String query = "select * from items where item_id = \"" + itemid + "\"";
