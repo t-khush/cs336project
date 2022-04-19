@@ -18,11 +18,10 @@
 	<div class="h1"><h1 style="font-size:30px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
 <p style="font-size:20px"><strong> Manual Bid on <%out.println(request.getSession().getAttribute("selectedItemName"+ request.getSession().getAttribute("itemNum").toString())); %> </strong></p>
+<form action="ManualBidPageJava.jsp">
 <input type="man_bid" id="man_bid" name="man_bid" placeholder="Place a Bid (without $ sign)" style="height: 20px; width: 230px">
 <br></br>
-<%
-out.println("BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString());
-//out.println("<a href='BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString() + "'<button>Place Manual Bid</button></a>");
-%>
+<input type="submit" value="Place Manual Bid">
+</form>
 </body></center>
 </html>

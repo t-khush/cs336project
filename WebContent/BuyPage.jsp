@@ -44,6 +44,9 @@
 			ResultSet result = stmt.executeQuery(query);
 			ResultSetMetaData resultMetaData = result.getMetaData();
 			result.next();
+			
+			request.getSession().setAttribute("currBid", result.getString(8));
+			request.getSession().setAttribute("bidInc", result.getString(7));
 
 			out.println("<h1 style='font-size:30px'><strong>" + result.getString(2) + "</strong></h1>");
 			out.println("<h3 style='font-size:22px'><strong> Current Price: $" + result.getString(8) + "</strong></h3>");
