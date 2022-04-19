@@ -20,7 +20,9 @@
 <p style="font-size:20px"><strong> Manual Bid on <%out.println(request.getSession().getAttribute("selectedItemName"+ request.getSession().getAttribute("itemNum").toString())); %> </strong></p>
 <input type="man_bid" id="man_bid" name="man_bid" placeholder="Place a Bid (without $ sign)" style="height: 20px; width: 230px">
 <br></br>
-<form action="Home.jsp">
-<input type="submit" value="Place Manual Bid">
+<%
+out.println("BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString());
+//out.println("<a href='BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString() + "'<button>Place Manual Bid</button></a>");
+%>
 </body></center>
 </html>
