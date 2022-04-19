@@ -21,22 +21,22 @@
 	try {
 
 		//Get parameters from the HTML form at the index.jsp
-		String manBid = request.getParameter("man_bid");
+		String autoBid = request.getParameter("auto_bid");
+		String autoBidInc = request.getParameter("auto_bid_inc");
 		String currBid = request.getSession().getAttribute("currBid").toString();
-		String bidInc = request.getSession().getAttribute("bidInc").toString();		
+		String bidInc = request.getSession().getAttribute("bidInc").toString();
 		String itemNum = (String)request.getSession().getAttribute("itemNum");
 		String itemName = request.getSession().getAttribute("selectedItemName" + itemNum).toString();
-		String seller = request.getSession().getAttribute("seller").toString();
 		
-		if(Float.parseFloat(manBid) < Float.parseFloat(currBid)){
-			out.println("Cannot place a bid lower than the current highest bid.");
-			out.println("<a href='ManualBidPage.jsp'>");
+		if(Float.parseFloat(autoBidInc) < Float.parseFloat(bidInc)){
+			out.println("Cannot make your bid increment lower than the set bid increment amount.");
+			out.println("<a href='AutomaticBidPage.jsp'>");
 			out.println("<br><br><input type='button' value='Back'/>");
 			out.println("</a>");
 		}
-		else if(Float.parseFloat(manBid) - Float.parseFloat(currBid) < Float.parseFloat(bidInc)){
+/* 		else if(Float.parseFloat(manBid) - Float.parseFloat(currBid) < Float.parseFloat(bidInc)){
 			out.println("Cannot place a bid lower than the bid increment amount.");
-			out.println("<a href='ManualBidPage.jsp'>");
+			out.println("<a href='AutomaticBidPage.jsp'>");
 			out.println("<br><br><input type='button' value='Back'/>");
 			out.println("</a>");
 		}
@@ -68,7 +68,7 @@
 			out.println("</a>");
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
-		}
+		} */
 		
 	} catch (Exception ex) {
 		out.print(ex);

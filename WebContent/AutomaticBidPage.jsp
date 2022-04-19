@@ -17,9 +17,13 @@
 	</style>
 	<div class="h1"><h1 style="font-size:30px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
-<p style="font-size:20px"><strong> Automatic Bid on <%out.println(request.getSession().getAttribute("selectedItemName"+ request.getSession().getAttribute("itemNum").toString()));%> </strong></p>
-<input type="auto_bid" id="auto_bid" name="auto_bid" placeholder="Place a Bid (without $ sign)" style="height: 20px; width: 230px">
+<p style="font-size:20px"><strong> Automatic Bid on <%out.println(request.getSession().getAttribute("selectedItemName"+ request.getSession().getAttribute("itemNum").toString())); %> </strong></p>
+<form action="AutomaticBidPageJava.jsp">
+<input type="auto_bid" id="auto_bid" name="auto_bid" placeholder="Place Maximum Bid (without $ sign)" style="height: 20px; width: 230px">
+<br></br>
+<input type="auto_bid_inc" id="auto_bid_inc" name="auto_bid_inc" placeholder="Place Bid Increment (without $ sign)" style="height: 20px; width: 230px">
 <br></br>
 <input type="submit" value="Place Automatic Bid">
+</form>
 </body></center>
 </html>
