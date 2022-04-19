@@ -47,6 +47,7 @@
 			
 			request.getSession().setAttribute("currBid", result.getString(8));
 			request.getSession().setAttribute("bidInc", result.getString(7));
+			request.getSession().setAttribute("seller", result.getString(5));
 
 			out.println("<h1 style='font-size:30px'><strong>" + result.getString(2) + "</strong></h1>");
 			out.println("<h3 style='font-size:22px'><strong> Current Price: $" + result.getString(8) + "</strong></h3>");

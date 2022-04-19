@@ -11,7 +11,7 @@
 </head>
 <style>
 		h1 {margin-top: 0px;}
-		a:link {color: black; text-decoration: none;}
+		a:link, a:visited {color: black; text-decoration: none;}
 		a:hover{color: black; text-decoration: underline;}
 	</style>
 	<div class="h1"><h1 style="font-size:28px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
@@ -26,11 +26,19 @@
 		String bidInc = request.getSession().getAttribute("bidInc").toString();		
 		String itemNum = (String)request.getSession().getAttribute("itemNum");
 		String itemName = request.getSession().getAttribute("selectedItemName" + itemNum).toString();
+		String seller = request.getSession().getAttribute("seller").toString();
+		String user = request.getSession().getAttribute("username").toString();
 		
 		if(Float.parseFloat(manBid) < Float.parseFloat(currBid)){
 			out.println("Cannot place a bid lower than the current highest bid.");
 			out.println("<a href='ManualBidPage.jsp'>");
 			out.println("<br><br><input type='button' value='Back'/>");
+			out.println("</a>");
+		}
+		else if (seller.equals(user)) {
+			out.println("You're selling this item. You can't bid on it!");
+			out.println("<a href='BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString() + "'>");
+			out.println("<br><br><input type='button' value='Back to Item'/>");
 			out.println("</a>");
 		}
 		else if(Float.parseFloat(manBid) - Float.parseFloat(currBid) < Float.parseFloat(bidInc)){
@@ -40,10 +48,33 @@
 			out.println("</a>");
 		}
 		else if(Float.parseFloat(manBid) - Float.parseFloat(currBid) >= Float.parseFloat(bidInc)) {
+			
+			
+			//Get the database connection
+			ApplicationDB db = new ApplicationDB();	
+			Connection con = db.getConnection();
+			
+			//Create a SQL statement
+			Statement stmt = con.createStatement();
+			
+			
+			//Get parameters from the HTML form at the index.jsp
+			
+			//Make an insert statement for the Sells table: 
+			String updateBid = "update items set current_price = ? where username = ?";
+			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+			PreparedStatement ps = con.prepareStatement(updateBid);
+
+			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+			ps.setString(1, manBid);
+			ps.setString(2, seller);
+			ps.executeUpdate();
 			out.println("Your bid of $" + manBid + " was successfully placed for " + itemName + "!");
 			out.println("<a href='BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString() + "'>");
 			out.println("<br><br><input type='button' value='Back to Item'/>");
 			out.println("</a>");
+			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
+			con.close();
 		}
 		
 	} catch (Exception ex) {
