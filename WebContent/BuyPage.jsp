@@ -17,6 +17,8 @@
 		table {border-collapse: collapse; width: 40%}
 		td { border: 1px solid #dddddd; text-align: left; padding: 11px; font-size: 18px;}
 		tr:nth-child(even) { background-color: #dddddd;}
+		.button-container form, .button-container form div { display: inline; }
+		.button-container button { display: inline; vertical-align: middle;}
 </style>
 	<div class="h1"><h1><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
@@ -32,31 +34,30 @@
 			
 			//Get parameters from the HTML form at the index.jsp
 			int num = Integer.parseInt(request.getParameter("num").toString());
-			String itemid = (String)request.getSession().getAttribute("selectedItemID"+num);
+			String itemid = (String)request.getSession().getAttribute("selectedItemID" + num);
 			String username = (String)request.getSession().getAttribute("username");
-			//System.out.println("item_id " + itemname); 
+
 			String query = "select * from items where item_id = \"" + itemid + "\"";
-			//out.println(query);
 			ResultSet result = stmt.executeQuery(query);
 			ResultSetMetaData resultMetaData = result.getMetaData();
 			result.next();
 
 			out.println("<h1 style='font-size:30px'><strong>" + result.getString(2) + "</strong></h1>");
-			//out.println("<br>");
 			out.println("<h3 style='font-size:22px'><strong> Current Price: $" + result.getString(8) + "</strong></h3>");
 			
 			// Place Manual Bid Button
-			out.println("<form action='ManualBidPage.jsp'>");
-			out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
-			out.println("</form>");
-			out.println("<br>");
+            out.println("<div class='button-container'>");
+            out.println("<form style='text:align=center' action='ManualBidPage.jsp'>");
+            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
+            out.println("</form>");
 
-			
-			// Place Automatic Bid Button
-			out.println("<form action='AutomaticBidPage.jsp'>");
-			out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Automatic Bid'>");
-			out.println("</form>");
-			out.println("<br>");
+            
+            // Place Automatic Bid Button
+            out.println("<form style='text:align=center' action='AutomaticBidPage.jsp'>");
+            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Automatic Bid'>");
+            out.println("</form>");
+            out.println("</div>");
+            out.println("<br>");
 			
 			// ITEM DETAILS
 			out.println("<table>");

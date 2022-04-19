@@ -17,13 +17,10 @@
 	</style>
 	<div class="h1"><h1 style="font-size:30px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
-<p style="font-size:20px"><strong> Manual Bid on an Item</strong></p>
-<form action="SellerFormSuccess.jsp">
-
-<input type="init_bid" id="init_bid" name="init_bid" placeholder="Starting Bid Price (without $ sign)" style="height: 20px; width: 230px">
-
+<p style="font-size:20px"><strong> Manual Bid on a  </strong></p>
+<input type="man_bid" id="man_bid" name="man_bid" placeholder="Place a Bid (without $ sign)" style="height: 20px; width: 230px">
 <br></br>
+<form action="Home.jsp">
 <input type="submit" value="Place Manual Bid">
-</form>
 </body></center>
 </html>

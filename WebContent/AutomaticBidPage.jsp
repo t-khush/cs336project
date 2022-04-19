@@ -18,24 +18,8 @@
 	<div class="h1"><h1 style="font-size:30px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
 <p style="font-size:20px"><strong> Automatic Bid on an Item</strong></p>
-<form action="SellerFormSuccess.jsp">
-<select name = "category">
-    <option value="" disabled="disabled" selected="selected">Select a category</option>
-    <option value="phone" name = "phone">Phone</option>
-    <option value="tablet" name = "tablet">Tablet</option>
-    <option value="laptop" name = "laptop">Laptop</option>
-</select>
-<br><br>
-<input type="item_name" id="item_name" name="item_name" placeholder="Item Name">
-<p>
-   <textarea name="item_desc" id="item_desc" style="height: 100px; width: 250px;" placeholder="Item Description (max. 300 characters)"></textarea>
-</p>
-<input type="init_bid" id="init_bid" name="init_bid" placeholder="Starting Bid Price (without $ sign)" style="height: 20px; width: 230px">
-<input type="bid_inc" id="bid_inc" name="bid_inc" placeholder="Bid Increment Amount (without $ sign)" style="height: 20px; width: 230px">
-<br><br>
-Auction End Date & Time: <input type="datetime-local" id="dur_auction" name="dur_auction"/>
+<input type="init_bid" id="init_bid" name="init_bid" placeholder="Place a Bid (without $ sign)" style="height: 20px; width: 230px">
 <br></br>
-<input type="submit" value="Place Item on Auction">
-</form>
+<input type="submit" value="Place Automatic Bid">
 </body></center>
 </html>
