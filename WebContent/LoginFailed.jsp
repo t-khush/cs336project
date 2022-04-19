@@ -28,24 +28,6 @@
 
 		//Create a SQL statement
 		Statement stmt = con.createStatement();
-		
-		/*
-		//Get parameters from the HTML form at the index.jsp
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-
-		String query = "select * from user where username = \"" + username + "\" and " + "password = \"" + password + "\"";
-		
-        ResultSet result = stmt.executeQuery(query);
-        boolean inDb = result.first();
-       
-        if(inDb) {
-    		out.print("Sign in succeeded!");
-        }
-        else{
-        	out.print("Sign in failed. The username or password you entered is not correct.");
-        }
-        */
         
 		//Close the connection. Don't forget to do it, otherwise you're keeping thes resources of the server allocated.
 		con.close();
@@ -57,7 +39,7 @@
 %>
 <br></br>
 <form action="Home.jsp">
-		<input type="submit" style="font-size:15px;height:30px;width:150px" value="Go back to main page">
+		<input type="submit" style="font-size:15px;height:30px;width:180px" value="Go back to main page">
 </form>
 
 </body></center>
