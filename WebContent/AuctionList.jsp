@@ -3,6 +3,7 @@
 <!--Import some libraries that have classes that we need -->
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ page import = "java.text.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,12 +33,26 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
+			//ResultSetMetaData metaData = result.getMetaData();
+	        long millis=System.currentTimeMillis();
+	        java.sql.Timestamp time = new java.sql.Timestamp(millis); 
+         	String currentTimeStamp = time.toString();
+         	
+         	String update = "UPDATE items SET bought = true WHERE ? >= sell_by_date";
+		
+         	PreparedStatement ps = con.prepareStatement(update);
+
+			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+			ps.setString(1, currentTimeStamp);
+			ps.executeUpdate();
 			
-			String query = "select name, item_id from items";
+			String query = "select name, item_id from items where bought is not true";
 	        ResultSet result = stmt.executeQuery(query);
 	        
-	        //ResultSetMetaData metaData = result.getMetaData();
 	        
+         	
+     
+         	
 	        out.println("<form action='BuyPage.jsp'>");
 	        out.println("<table>");
 	        
