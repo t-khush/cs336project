@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for macos11.6 (x86_64)
 --
 -- Host: localhost    Database: BuyMe
 -- ------------------------------------------------------
@@ -18,7 +18,7 @@
 --
 -- Table structure for table `items`
 --
-use buyme;
+
 DROP TABLE IF EXISTS `items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -32,10 +32,11 @@ CREATE TABLE `items` (
   `bid_increment` float(15,2) DEFAULT NULL,
   `current_price` float(15,2) DEFAULT NULL,
   `sell_by_date` datetime DEFAULT NULL,
+  `bought` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`item_id`),
   KEY `username` (`username`),
   CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +45,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
+INSERT INTO `items` VALUES (1,'iPhone','phone','good iphone','plolla',200.00,10.00,250.00,'2022-05-02 18:31:00',NULL),(2,'iPad Pro','tablet','hello this is good ipad','plolla',555.00,4.00,555.00,'2022-05-04 18:32:00',NULL),(3,'iPhone 2','phone','this is good iphone','plolla',333.00,3.00,333.00,'2022-04-28 19:54:00',1);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +69,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('e','e'),('khush','khush'),('plolla','hello');
+INSERT INTO `user` VALUES ('e','e'),('khush','khush'),('name','name'),('plolla','hello');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -80,6 +82,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-16 17:40:24
-
-select * from items;
+-- Dump completed on 2022-04-29 19:56:40
