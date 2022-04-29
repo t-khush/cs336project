@@ -70,6 +70,9 @@
 	            out.println("</div>");
 				
 			}
+			else{
+				out.println("<p>You cannot buy your own item</p>");
+			}
 			
 			out.println("<br>");
 			// ITEM DETAILS

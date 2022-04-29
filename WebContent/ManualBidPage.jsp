@@ -17,7 +17,13 @@
 	</style>
 	<div class="h1"><h1 style="font-size:30px"><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
 <center><body>	
-<p style="font-size:20px"><strong> Manual Bid on <%out.println(request.getSession().getAttribute("selectedItemName"+ request.getSession().getAttribute("itemNum").toString())); %> </strong></p>
+
+<p style="font-size:20px">
+<strong> Manual Bid on <%out.println(request.getSession().getAttribute("selectedItemName"
++ request.getSession().getAttribute("itemNum").toString())
++"\n with current bid being $"+request.getSession().getAttribute("currBid")); %> 
+</strong></p>
+
 <form action="ManualBidPageJava.jsp">
 <input type="man_bid" id="man_bid" name="man_bid" placeholder="Place a Bid (without $ sign)" style="height: 20px; width: 230px">
 <br></br>
