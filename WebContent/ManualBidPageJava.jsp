@@ -26,6 +26,7 @@
 		String bidInc = request.getSession().getAttribute("bidInc").toString();		
 		String itemNum = (String)request.getSession().getAttribute("itemNum");
 		String itemName = request.getSession().getAttribute("selectedItemName" + itemNum).toString();
+		String itemID = request.getSession().getAttribute("selectedItemID" + itemNum).toString();
 		String seller = request.getSession().getAttribute("seller").toString();
 		
 		if(Float.parseFloat(manBid) < Float.parseFloat(currBid)){
@@ -54,13 +55,13 @@
 			//Get parameters from the HTML form at the index.jsp
 			
 			//Make an insert statement for the Sells table: 
-			String updateBid = "update items set current_price = ? where username = ?";
+			String updateBid = "update items set current_price = ? where item_id = ?";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(updateBid);
 
 			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
 			ps.setString(1, manBid);
-			ps.setString(2, seller);
+			ps.setString(2, itemID);
 			ps.executeUpdate();
 			out.println("Your bid of $" + manBid + " was successfully placed for " + itemName + "!");
 			out.println("<a href='BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString() + "'>");
