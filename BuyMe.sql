@@ -40,7 +40,7 @@ CREATE TABLE `automatic_bid` (
 
 LOCK TABLES `automatic_bid` WRITE;
 /*!40000 ALTER TABLE `automatic_bid` DISABLE KEYS */;
-INSERT INTO `automatic_bid` VALUES (1,'khush',1200.00,10.00),(1,'hey',1250.00,10.00),(5,'khush',10.00,2.00);
+INSERT INTO `automatic_bid` VALUES (1,'khush',1200.00,10.00),(1,'hey',1250.00,10.00),(5,'khush',10.00,2.00),(6,'khush',10.00,4.00),(6,'khush',50.00,5.00),(7,'khush',10.00,1.00),(8,'khush',100.00,3.00);
 /*!40000 ALTER TABLE `automatic_bid` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +68,7 @@ CREATE TABLE `bid_history` (
 
 LOCK TABLES `bid_history` WRITE;
 /*!40000 ALTER TABLE `bid_history` DISABLE KEYS */;
-INSERT INTO `bid_history` VALUES (2,620.00,'khush');
+INSERT INTO `bid_history` VALUES (2,620.00,'khush'),(5,3.00,'khush'),(6,5.00,'khush'),(6,6.00,'name'),(6,10.00,'khush'),(6,11.00,'khush'),(6,14.00,'name'),(7,2.00,'khush'),(8,2.00,'name'),(8,5.00,'khush'),(8,6.00,'name'),(8,9.00,'khush');
 /*!40000 ALTER TABLE `bid_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `items` (
   PRIMARY KEY (`item_id`),
   KEY `username` (`username`),
   CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'iPhone','phone','good iphone','plolla',200.00,10.00,1000.00,'2022-05-02 18:31:00',NULL),(2,'iPad Pro','tablet','hello this is good ipad','plolla',555.00,4.00,620.00,'2022-05-04 18:32:00',NULL),(3,'iPhone 2','phone','this is good iphone','plolla',333.00,3.00,333.00,'2022-04-28 19:54:00',1),(4,'iphone use thies','phone','test',NULL,1.00,1.00,1.00,'2022-05-07 21:02:00',0),(5,'a','phone','a phone','seller',1.00,1.00,1.00,'2022-05-07 21:03:00',0);
+INSERT INTO `items` VALUES (1,'iPhone','phone','good iphone','plolla',200.00,10.00,1000.00,'2022-05-02 18:31:00',NULL),(2,'iPad Pro','tablet','hello this is good ipad','plolla',555.00,4.00,620.00,'2022-05-04 18:32:00',NULL),(3,'iPhone 2','phone','this is good iphone','plolla',333.00,3.00,333.00,'2022-04-28 19:54:00',1),(4,'iphone use thies','phone','test',NULL,1.00,1.00,1.00,'2022-05-07 21:02:00',0),(5,'a','phone','a phone','seller',1.00,1.00,1.00,'2022-05-07 21:03:00',0),(6,'galaxy','laptop','galaxy','seller',1.00,1.00,14.00,'2022-05-07 21:44:00',0),(7,'use this for no initial bid ','phone','na','seller',1.00,1.00,2.00,'2022-04-30 21:52:00',0),(8,'3',NULL,'name first manual, khush auto, name manual','seller',1.00,1.00,9.00,'2022-04-30 21:53:00',0);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-29 21:23:05
+-- Dump completed on 2022-04-29 21:55:36

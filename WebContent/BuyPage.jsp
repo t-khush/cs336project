@@ -39,11 +39,82 @@
 			String itemid = (String)request.getSession().getAttribute("selectedItemID" + num);
 			String itemName = (String)request.getSession().getAttribute("selectedItemName"+num);
 			String username = (String)request.getSession().getAttribute("username");
-
+			
 			String query = "select * from items where item_id = \"" + itemid + "\"";
 			ResultSet result = stmt.executeQuery(query);
 			ResultSetMetaData resultMetaData = result.getMetaData();
 			result.next();
+			
+			
+			// Before rendering the item price, see if any automatic bidding stuff has to happen
+			String autobid = "SELECT * FROM automatic_bid WHERE item_id = \"" + itemid + "\"" ;
+			Statement stmt2 = con.createStatement();
+			ResultSet autobids = stmt2.executeQuery(autobid);
+			if(autobids.next()) {
+				// At this point we know automatic bids exist. Let's check if the last bid on the item was made by the same person 
+				// who is automatically bidding
+				String automaticBidder = autobids.getString(2); 
+				String itemBidHistory = "SELECT * FROM bid_history WHERE item_id = \"" + itemid + "\" ORDER BY current_bid DESC LIMIT 1" ;
+				Statement stmt3 = con.createStatement();
+				ResultSet itemBidHistoryResults = stmt3.executeQuery(itemBidHistory);
+				// Check if there are bid histories on this item 
+				if(itemBidHistoryResults.next()){
+					if(!itemBidHistoryResults.getString(3).equals(automaticBidder)){
+						// If the last bid wasn't caused by the automatic bidder, try to kick in automatic bidder's bid 
+						float currentPrice = Float.parseFloat(result.getString(8));
+						float proposedAutomaticBid = currentPrice + Float.parseFloat(autobids.getString(4)); 
+						if(proposedAutomaticBid <= Float.parseFloat(autobids.getString(3))){
+							// we're good for this bid 
+							String bidHistoryUpdate = "INSERT INTO bid_history (item_id, current_bid, bidder) VALUES (?, ?, ?)";
+							PreparedStatement updatePs = con.prepareStatement(bidHistoryUpdate);
+							updatePs.setString(1, itemid);
+							updatePs.setString(2, proposedAutomaticBid+"");
+							updatePs.setString(3, automaticBidder);
+							updatePs.executeUpdate();
+
+							String updateBid = "update items set current_price = ? where item_id = ?";
+							//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+							PreparedStatement ps = con.prepareStatement(updateBid);
+
+							//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+							ps.setString(1, proposedAutomaticBid+"");
+							ps.setString(2, itemid);
+							ps.executeUpdate();
+						}
+					}
+				}
+				else{
+					float currentPrice = Float.parseFloat(result.getString(8));
+					float proposedAutomaticBid = currentPrice + Float.parseFloat(autobids.getString(4)); 
+					if(proposedAutomaticBid <= Float.parseFloat(autobids.getString(3))){
+						// we're good for this bid 
+						String bidHistoryUpdate = "INSERT INTO bid_history (item_id, current_bid, bidder) VALUES (?, ?, ?)";
+						PreparedStatement updatePs = con.prepareStatement(bidHistoryUpdate);
+						updatePs.setString(1, itemid);
+						updatePs.setString(2, proposedAutomaticBid+"");
+						updatePs.setString(3, automaticBidder);
+						updatePs.executeUpdate();
+
+						String updateBid = "update items set current_price = ? where item_id = ?";
+						//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+						PreparedStatement ps = con.prepareStatement(updateBid);
+
+						//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+						ps.setString(1, proposedAutomaticBid+"");
+						ps.setString(2, itemid);
+						ps.executeUpdate();
+					}
+				}
+
+			}
+			
+
+			
+			Statement stmt4 = con.createStatement();
+			result = stmt4.executeQuery(query);
+			resultMetaData = result.getMetaData();
+			result.next();
+
 			
 			request.getSession().setAttribute("currBid", result.getString(8));
 			request.getSession().setAttribute("bidInc", result.getString(7));
