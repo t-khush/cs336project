@@ -27,6 +27,9 @@
 		String bidInc = request.getSession().getAttribute("bidInc").toString();
 		String itemNum = (String)request.getSession().getAttribute("itemNum");
 		String itemName = request.getSession().getAttribute("selectedItemName" + itemNum).toString();
+		String itemID = request.getSession().getAttribute("selectedItemID" + itemNum).toString();
+		String bidder = request.getSession().getAttribute("username").toString();
+
 		
 		if(Float.parseFloat(autoBidInc) < Float.parseFloat(bidInc)){
 			out.println("Cannot make your bid increment lower than the set bid increment amount.");
@@ -34,41 +37,25 @@
 			out.println("<br><br><input type='button' value='Back'/>");
 			out.println("</a>");
 		}
-/* 		else if(Float.parseFloat(manBid) - Float.parseFloat(currBid) < Float.parseFloat(bidInc)){
-			out.println("Cannot place a bid lower than the bid increment amount.");
-			out.println("<a href='AutomaticBidPage.jsp'>");
-			out.println("<br><br><input type='button' value='Back'/>");
-			out.println("</a>");
-		}
-		else if(Float.parseFloat(manBid) - Float.parseFloat(currBid) >= Float.parseFloat(bidInc)) {
-			
-			
-			//Get the database connection
+		
+		else{
 			ApplicationDB db = new ApplicationDB();	
 			Connection con = db.getConnection();
 			
-			//Create a SQL statement
-			Statement stmt = con.createStatement();
-			
-			
-			//Get parameters from the HTML form at the index.jsp
-			
-			//Make an insert statement for the Sells table: 
-			String updateBid = "update items set current_price = ? where username = ?";
-			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-			PreparedStatement ps = con.prepareStatement(updateBid);
-
-			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-			ps.setString(1, manBid);
-			ps.setString(2, seller);
-			ps.executeUpdate();
-			out.println("Your bid of $" + manBid + " was successfully placed for " + itemName + "!");
+			String bidHistoryUpdate = "INSERT INTO automatic_bid (item_id, bidder, maximum_bid, bid_increment) VALUES (?, ?, ?, ?)";
+			PreparedStatement updatePs = con.prepareStatement(bidHistoryUpdate);
+			updatePs.setString(1, itemID); 
+			updatePs.setString(2, bidder); 
+			updatePs.setString(3, autoBid);
+			updatePs.setString(4, autoBidInc);
+			updatePs.executeUpdate();
+			out.println("Your automatic bid has been saved. Return to item listing");
 			out.println("<a href='BuyPage.jsp?num=" + request.getSession().getAttribute("itemNum").toString() + "'>");
 			out.println("<br><br><input type='button' value='Back to Item'/>");
 			out.println("</a>");
-			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-			con.close();
-		} */
+			
+			con.close(); 
+		}
 		
 	} catch (Exception ex) {
 		out.print(ex);

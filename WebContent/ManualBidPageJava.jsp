@@ -28,6 +28,7 @@
 		String itemName = request.getSession().getAttribute("selectedItemName" + itemNum).toString();
 		String itemID = request.getSession().getAttribute("selectedItemID" + itemNum).toString();
 		String seller = request.getSession().getAttribute("seller").toString();
+		String buyer = request.getSession().getAttribute("username").toString();
 		
 		if(Float.parseFloat(manBid) < Float.parseFloat(currBid)){
 			out.println("Cannot place a bid lower than the current highest bid.");
@@ -68,6 +69,14 @@
 			out.println("<br><br><input type='button' value='Back to Item'/>");
 			out.println("</a>");
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
+			
+			String bidHistoryUpdate = "INSERT INTO bid_history (item_id, current_bid, bidder) VALUES (?, ?, ?)";
+			PreparedStatement updatePs = con.prepareStatement(bidHistoryUpdate);
+			updatePs.setString(1, itemID);
+			updatePs.setString(2, manBid);
+			updatePs.setString(3, buyer);
+			updatePs.executeUpdate();
+			
 			con.close();
 		}
 		
