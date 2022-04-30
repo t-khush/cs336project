@@ -50,6 +50,10 @@
 	<form action="SellerForm.jsp">
 		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Sell">
 	</form>
+	<br><br><br><br>
+	<form action="AlertsList.jsp">
+		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Alerts">
+	</form>
 	<br></br><br></br><br></br><br></br>
 	<form action="Home.jsp">
 		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Logout">
