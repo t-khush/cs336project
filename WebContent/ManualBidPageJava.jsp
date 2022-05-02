@@ -77,6 +77,23 @@
 			updatePs.setString(3, buyer);
 			updatePs.executeUpdate();
 			
+			// Check if there's an automatic bid on the item we're looking at
+			String checkForAutomaticbid = "SELECT maximum_bid, bidder FROM automatic_bid WHERE item_id = " + itemID; 
+			ResultSet automaticBidCheck = stmt.executeQuery(checkForAutomaticbid); 
+			if(automaticBidCheck.next()){
+				// At this point we know there'a an automatic bid on the same item a user is manually bidding on. 
+				// Check if manual bid exceeds the upper limit of automatic bid 
+				if(Float.parseFloat(manBid) > Float.parseFloat(automaticBidCheck.getString(1))){
+					String alertMsg = "A user bid higher than your maximum bid cap on the item " + itemName; 
+					String alertForAutoBidder = "INSERT IGNORE INTO alerts(item_id, message, username) VALUES (?, ?, ?)";
+					PreparedStatement preparedStatement = con.prepareStatement(alertForAutoBidder); 
+					preparedStatement.setString(1, itemID); 
+					preparedStatement.setString(2, alertMsg); 
+					preparedStatement.setString(3, automaticBidCheck.getString(2)); 
+					preparedStatement.executeUpdate(); 
+
+				}
+			}
 			con.close();
 		}
 		
