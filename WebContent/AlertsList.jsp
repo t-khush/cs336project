@@ -53,26 +53,20 @@
         		result.beforeFirst();
     	        while(result.next()) {
     	        	String message = result.getString(2);
-	        		String preview = "";
-	        		if (message.length() > 15) {
-	        			preview = message.substring(0,10) + "...";
-	        		}
-	        		else {
-	        			preview = message;
-	        		}
+    	        	
     	        	if (i % 2 != 0) {
     	        		out.println("<tr>");
-    	        		out.println("<td><a style='font-size:18px' href='Alert.jsp?num2="+ i + "'>" + preview + "</a></td>");
-    		        	request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
-    			        request.getSession().setAttribute("selectedAlertMessage"+i, message);
+    	        		out.println("<td>" + message + "</td>");
+    		        	//request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
+    			        //request.getSession().setAttribute("selectedAlertMessage"+i, message);
     			        
     	        		out.println("</tr>");
     	        	}
     	        	else {
     	        		out.println("<tr>");
-    	        		out.println("<td><a style='font-size:18px' href='Alert.jsp?num2="+ i + "'>" + preview + "</a></td>");
-    		        	request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
-    			        request.getSession().setAttribute("selectedAlertMessage"+i, message);
+    	        		out.println("<td>" + message + "</td>");
+    		        	//request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
+    			        //request.getSession().setAttribute("selectedAlertMessage"+i, message);
     	        		out.println("</tr>");
     	        	}
     	        	i++;
