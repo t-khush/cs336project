@@ -46,6 +46,50 @@
 			ps.setString(1, currentTimeStamp);
 			ps.executeUpdate();
 			
+
+			
+			// Alerts 
+			// Alert users who have successfully sold an item 
+			
+			String username = (String)request.getSession().getAttribute("username");
+			String soldItemQuery = "SELECT item_id, name FROM items WHERE bought = TRUE AND username = '" + username + "'"; // Query for items sold by logged in user
+			ResultSet soldItemResults = stmt.executeQuery(soldItemQuery);
+			while(soldItemResults.next()){
+				String alertString = "Your item named " + soldItemResults.getString(2)+ " was sold."; 
+				String alertInsertForSoldItem = "INSERT IGNORE INTO alerts(item_id, message, username) VALUES (?, ?, ?)";
+				PreparedStatement soldItemAlert = con.prepareStatement(alertInsertForSoldItem);
+				soldItemAlert.setString(1, soldItemResults.getString(1));
+				soldItemAlert.setString(2, alertString); 
+				soldItemAlert.setString(3, username); 
+				soldItemAlert.executeUpdate();
+			}
+			
+			// Alert users who have successfully bought an item
+			// Find all item ids, iterate through them and add alerts 
+			String allBoughtItems = "SELECT item_id, name FROM items WHERE bought = TRUE"; 
+			ResultSet allBoughtItemsResult = stmt.executeQuery(allBoughtItems);
+			Statement stmt2 = con.createStatement();
+			while(allBoughtItemsResult.next()){
+				String boughtString = "You successfully bought " + allBoughtItemsResult.getString(2) + "."; 
+				String findTheBuyer = "select bidder from bid_history where item_id = " + allBoughtItemsResult.getString(1)+ " order by current_bid desc limit 1"; 
+				ResultSet buyerOfItem = stmt2.executeQuery(findTheBuyer);
+				if(buyerOfItem.next()){
+					String boughtItemAlert = "INSERT IGNORE INTO alerts(item_id, message, username) VALUES (?, ?, ?)";
+					PreparedStatement boughtItemAlertStatement = con.prepareStatement(boughtItemAlert);
+					
+					boughtItemAlertStatement.setString(1, allBoughtItemsResult.getString(1));
+					boughtItemAlertStatement.setString(2, boughtString); 
+					boughtItemAlertStatement.setString(3, buyerOfItem.getString(1)); 
+					
+					boughtItemAlertStatement.executeUpdate(); 
+	
+				}
+				
+			}
+			
+
+			
+			
 			String query = "select name, item_id from items where bought is not true";
 	        ResultSet result = stmt.executeQuery(query);
 	        

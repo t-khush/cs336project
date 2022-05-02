@@ -35,7 +35,7 @@
 			
 			//ResultSetMetaData metaData = result.getMetaData();
 			String user = request.getSession().getAttribute("username").toString();
-			String query = "select * from alerts where username = '" + user + "' order by alert_id desc";
+			String query = "select * from alerts where username = '" + user + "'";
 	        ResultSet result = stmt.executeQuery(query);
 	        
 	        out.println("<form action='Alert.jsp'>");
@@ -52,7 +52,7 @@
         		int i = 1;
         		result.beforeFirst();
     	        while(result.next()) {
-    	        	String message = result.getString(3);
+    	        	String message = result.getString(2);
 	        		String preview = "";
 	        		if (message.length() > 15) {
 	        			preview = message.substring(0,10) + "...";
@@ -63,7 +63,6 @@
     	        	if (i % 2 != 0) {
     	        		out.println("<tr>");
     	        		out.println("<td><a style='font-size:18px' href='Alert.jsp?num2="+ i + "'>" + preview + "</a></td>");
-    		        	request.getSession().setAttribute("selectedAlertID"+i, result.getString(1));
     		        	request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
     			        request.getSession().setAttribute("selectedAlertMessage"+i, message);
     			        
@@ -72,7 +71,6 @@
     	        	else {
     	        		out.println("<tr>");
     	        		out.println("<td><a style='font-size:18px' href='Alert.jsp?num2="+ i + "'>" + preview + "</a></td>");
-    		        	request.getSession().setAttribute("selectedAlertID"+i, result.getString(1));
     		        	request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
     			        request.getSession().setAttribute("selectedAlertMessage"+i, message);
     	        		out.println("</tr>");
