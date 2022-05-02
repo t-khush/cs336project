@@ -83,7 +83,7 @@
 						}
 					}
 				}
-				else{
+				else{ 
 					float currentPrice = Float.parseFloat(result.getString(8));
 					float proposedAutomaticBid = currentPrice + Float.parseFloat(autobids.getString(4)); 
 					if(proposedAutomaticBid <= Float.parseFloat(autobids.getString(3))){

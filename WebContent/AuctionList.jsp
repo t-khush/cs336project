@@ -55,13 +55,34 @@
 			String soldItemQuery = "SELECT item_id, name FROM items WHERE bought = TRUE AND username = '" + username + "'"; // Query for items sold by logged in user
 			ResultSet soldItemResults = stmt.executeQuery(soldItemQuery);
 			while(soldItemResults.next()){
+				
+				//Let's check if the item has a reserve price. If it does, let's check if the last bid price is OVER the reserve price. 
+				String getReservePrice = "SELECT reserve_price FROM items WHERE item_id = "+soldItemResults.getString(1); 
+			
+				Statement stmt3 = con.createStatement(); 
+				ResultSet getReservePriceResult = stmt3.executeQuery(getReservePrice); 
+				if(getReservePriceResult.next() && getReservePriceResult.getString(1)!=null){
+					float price = Float.parseFloat(getReservePriceResult.getString(1)); 
+					String lastBidPriceQuery = "SELECT current_bid FROM bid_history WHERE item_id = " + soldItemResults.getString(1)+ " order by current_bid desc limit 1";
+					ResultSet lastBidPriceResult = stmt3.executeQuery(lastBidPriceQuery); 
+					if(lastBidPriceResult.next()){
+						float lastBid = Float.parseFloat(lastBidPriceResult.getString(1)); 
+						if(lastBid<price){
+							continue; 
+						}
+					}
+				}
+				String itemSoldToSomeoneQuery = "SELECT bidder FROM bid_history WHERE item_id = " + soldItemResults.getString(1)+ " order by current_bid desc limit 1";
+				ResultSet itemSoldResult = stmt3.executeQuery(itemSoldToSomeoneQuery); 
+				if(itemSoldResult.next() && itemSoldResult.getString(1)!=null){
 				String alertString = "Your item named " + soldItemResults.getString(2)+ " was sold."; 
-				String alertInsertForSoldItem = "INSERT IGNORE INTO alerts(item_id, message, username) VALUES (?, ?, ?)";
-				PreparedStatement soldItemAlert = con.prepareStatement(alertInsertForSoldItem);
-				soldItemAlert.setString(1, soldItemResults.getString(1));
-				soldItemAlert.setString(2, alertString); 
-				soldItemAlert.setString(3, username); 
-				soldItemAlert.executeUpdate();
+					String alertInsertForSoldItem = "INSERT IGNORE INTO alerts(item_id, message, username) VALUES (?, ?, ?)";
+					PreparedStatement soldItemAlert = con.prepareStatement(alertInsertForSoldItem);
+					soldItemAlert.setString(1, soldItemResults.getString(1));
+					soldItemAlert.setString(2, alertString); 
+					soldItemAlert.setString(3, username); 
+					soldItemAlert.executeUpdate();
+				}
 			}
 			
 			// Alert users who have successfully bought an item
@@ -73,6 +94,22 @@
 				String boughtString = "You successfully bought " + allBoughtItemsResult.getString(2) + "."; 
 				String findTheBuyer = "select bidder from bid_history where item_id = " + allBoughtItemsResult.getString(1)+ " order by current_bid desc limit 1"; 
 				ResultSet buyerOfItem = stmt2.executeQuery(findTheBuyer);
+				
+				Statement stmt4 = con.createStatement(); 
+				String getReservePrice2 = "SELECT reserve_price FROM items WHERE item_id = "+allBoughtItemsResult.getString(1); 
+				ResultSet getReservePriceResult2 = stmt4.executeQuery(getReservePrice2); 
+				if(getReservePriceResult2.next() && getReservePriceResult2.getString(1)!=null){
+					float price = Float.parseFloat(getReservePriceResult2.getString(1)); 
+					String lastBidPriceQuery = "SELECT current_bid FROM bid_history WHERE item_id = " + soldItemResults.getString(1)+ " order by current_bid desc limit 1";
+					ResultSet lastBidPriceResult = stmt4.executeQuery(lastBidPriceQuery); 
+					if(lastBidPriceResult.next()){
+						float lastBid = Float.parseFloat(lastBidPriceResult.getString(1)); 
+						if(lastBid<price){
+							continue; 
+						}
+					}
+				}
+				
 				if(buyerOfItem.next()){
 					String boughtItemAlert = "INSERT IGNORE INTO alerts(item_id, message, username) VALUES (?, ?, ?)";
 					PreparedStatement boughtItemAlertStatement = con.prepareStatement(boughtItemAlert);
@@ -87,16 +124,41 @@
 				
 			}
 			
+			// Alert users if a person bids on an item they're bidding on 
+			String allUnboughtItems = "SELECT item_id, name FROM items WHERE bought is not TRUE"; 
+			ResultSet allUnboughtItemsResult = stmt.executeQuery(allUnboughtItems);
+			while(allUnboughtItemsResult.next()){
+	
+				// Check if another user bid on this item in bid_history 
+				// and bid a higher price than the current price bid by the user logged in 
+				String getUsersLastBid = "SELECT current_bid FROM bid_history WHERE bidder = '" + username + "' AND item_id = " + allUnboughtItemsResult.getString(1) + " order by current_bid desc limit 1"; 
+				ResultSet getMyLastBid = stmt2.executeQuery(getUsersLastBid); 
+				if(getMyLastBid.next()){
+					float myLastBidFloat = Float.parseFloat(getMyLastBid.getString(1)); 
+					// Now let's check if someone else bid higher than me 
+					String getHigherBid = "SELECT current_bid FROM bid_history WHERE bidder != '" + username + "' AND current_bid > " + myLastBidFloat + " AND item_id = " + allUnboughtItemsResult.getString(1) + " order by current_bid desc limit 1";
+					ResultSet checkForHigherBids = stmt2.executeQuery(getHigherBid); 
+					if(checkForHigherBids.next()){
+						String higherBidAlertMessage = "A user bid higher than you on " +  allUnboughtItemsResult.getString(2); 
+						String higherBidAlert = "INSERT IGNORE INTO alerts(item_id, message, username) VALUES (?, ?, ?)";
+						PreparedStatement higherBidAlertStatement = con.prepareStatement(higherBidAlert);
+						
+						higherBidAlertStatement.setString(1, allUnboughtItemsResult.getString(1));
+						higherBidAlertStatement.setString(2, higherBidAlertMessage); 
+						higherBidAlertStatement.setString(3, username); 
+						
+						higherBidAlertStatement.executeUpdate(); 
 
+					}
+
+				}
+			}
+			
 			
 			
 			String query = "select name, item_id from items where bought is not true";
 	        ResultSet result = stmt.executeQuery(query);
-	        
-	        
-         	
-     
-         	
+    
 	        out.println("<form action='BuyPage.jsp'>");
 	        out.println("<table>");
 	        
