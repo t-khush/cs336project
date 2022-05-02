@@ -32,6 +32,7 @@
 </p>
 <input type="init_bid" id="init_bid" name="init_bid" placeholder="Starting Bid Price (without $ sign)" style="height: 20px; width: 230px">
 <input type="bid_inc" id="bid_inc" name="bid_inc" placeholder="Bid Increment Amount (without $ sign)" style="height: 20px; width: 230px">
+<input type="res_price" id="res_price" name="res_price" placeholder="Reserve Price (without $ sign)" style="height: 20px; width: 230px">
 <br><br>
 Auction End Date & Time: <input type="datetime-local" id="dur_auction" name="dur_auction"/>
 <br></br>

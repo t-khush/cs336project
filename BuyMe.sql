@@ -120,6 +120,7 @@ CREATE TABLE `items` (
   `current_price` float(15,2) DEFAULT NULL,
   `sell_by_date` datetime DEFAULT NULL,
   `bought` tinyint(1) DEFAULT '0',
+  `reserve_price` float(15,2) DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `username` (`username`),
   CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
@@ -132,7 +133,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'iPhone','phone','good iphone','plolla',200.00,10.00,1200.00,'2022-05-02 18:31:00',NULL),(2,'iPad Pro','tablet','hello this is good ipad','plolla',555.00,4.00,720.00,'2022-05-04 18:32:00',NULL),(3,'iPhone 2','phone','this is good iphone','plolla',333.00,3.00,333.00,'2022-04-28 19:54:00',1),(4,'iphone use thies','phone','test',NULL,1.00,1.00,1.00,'2022-05-07 21:02:00',0),(5,'a','phone','a phone','seller',1.00,1.00,1.00,'2022-05-07 21:03:00',0),(6,'galaxy','laptop','galaxy','seller',1.00,1.00,14.00,'2022-05-07 21:44:00',0),(7,'use this for no initial bid ','phone','na','seller',1.00,1.00,2.00,'2022-04-30 21:52:00',0),(8,'3',NULL,'name first manual, khush auto, name manual','seller',1.00,1.00,9.00,'2022-04-30 21:53:00',0),(9,'iPhone','phone','this is a good iphone ','plolla',222.00,2.00,222.00,'2022-05-01 22:06:00',0);
+INSERT INTO `items` VALUES (1,'iPhone','phone','good iphone','plolla',200.00,10.00,1200.00,'2022-05-02 18:31:00',NULL,NULL),(2,'iPad Pro','tablet','hello this is good ipad','plolla',555.00,4.00,720.00,'2022-05-04 18:32:00',NULL,NULL),(3,'iPhone 2','phone','this is good iphone','plolla',333.00,3.00,333.00,'2022-04-28 19:54:00',1,NULL),(4,'iphone use thies','phone','test',NULL,1.00,1.00,1.00,'2022-05-07 21:02:00',0,NULL),(5,'a','phone','a phone','seller',1.00,1.00,1.00,'2022-05-07 21:03:00',0,NULL),(6,'galaxy','laptop','galaxy','seller',1.00,1.00,14.00,'2022-05-07 21:44:00',0,NULL),(7,'use this for no initial bid ','phone','na','seller',1.00,1.00,2.00,'2022-04-30 21:52:00',0,NULL),(8,'3',NULL,'name first manual, khush auto, name manual','seller',1.00,1.00,9.00,'2022-04-30 21:53:00',0,NULL),(9,'iPhone','phone','this is a good iphone ','plolla',222.00,2.00,222.00,'2022-05-01 22:06:00',0,NULL);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,4 +170,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-30 15:28:24
+-- Dump completed on 2022-05-01 22:10:55

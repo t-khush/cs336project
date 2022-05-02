@@ -32,6 +32,7 @@
 		String username = (String)request.getSession().getAttribute("username");
 		out.print("Welcome to BuyMe, " + username + "!");
         
+		
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
 		
