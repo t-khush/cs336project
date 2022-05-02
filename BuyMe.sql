@@ -23,16 +23,14 @@ DROP TABLE IF EXISTS `alerts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `alerts` (
-  `alert_id` int NOT NULL AUTO_INCREMENT,
-  `item_id` int DEFAULT NULL,
-  `message` varchar(300) DEFAULT NULL,
+  `item_id` int NOT NULL,
+  `message` varchar(500) NOT NULL,
   `username` varchar(30) NOT NULL,
-  PRIMARY KEY (`alert_id`),
-  KEY `item_id` (`item_id`),
+  PRIMARY KEY (`item_id`,`message`,`username`),
   KEY `username` (`username`),
   CONSTRAINT `alerts_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`),
   CONSTRAINT `alerts_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +39,6 @@ CREATE TABLE `alerts` (
 
 LOCK TABLES `alerts` WRITE;
 /*!40000 ALTER TABLE `alerts` DISABLE KEYS */;
-INSERT INTO `alerts` VALUES (1,1,'congrats!! you won this item. To buy this this item you must hit the button below','plolla'),(2,1,'this is an alert hello','plolla');
 /*!40000 ALTER TABLE `alerts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,4 +167,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-01 22:10:55
+-- Dump completed on 2022-05-01 22:43:57
