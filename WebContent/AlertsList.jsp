@@ -57,16 +57,16 @@
     	        	if (i % 2 != 0) {
     	        		out.println("<tr>");
     	        		out.println("<td>" + message + "</td>");
-    		        	//request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
-    			        //request.getSession().setAttribute("selectedAlertMessage"+i, message);
+    		        	request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
+    			        request.getSession().setAttribute("selectedAlertMessage"+i, message);
     			        
     	        		out.println("</tr>");
     	        	}
     	        	else {
     	        		out.println("<tr>");
     	        		out.println("<td>" + message + "</td>");
-    		        	//request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
-    			        //request.getSession().setAttribute("selectedAlertMessage"+i, message);
+    		        	request.getSession().setAttribute("selectedAlertItemID"+i, result.getString(2));
+    			        request.getSession().setAttribute("selectedAlertMessage"+i, message);
     	        		out.println("</tr>");
     	        	}
     	        	i++;

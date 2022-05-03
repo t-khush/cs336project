@@ -179,15 +179,12 @@
 	        out.println("<tr>");
 	        out.println("<td><strong> Sell-By Date </strong></td><td><p>" + result.getString(9)+"</p></td>");
 	        out.println("</tr>");
-			/*
-			for (int i = 1; i <= resultMetaData.getColumnCount(); i++) {
-				out.println("<tr>");
-				String columnName = resultMetaData.getColumnName(i);
-				String columnValue = resultMetaData.getColumnName(i);
-		        out.println("<td>"+ columnName +"</td><td><p>" + columnValue+"</p></td>");
-		        out.println("</tr>");
-			}
-    		*/
+    		out.println("<br>");
+    		out.println("<br>");
+    		
+    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
+            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
+            out.println("</form>");
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			
