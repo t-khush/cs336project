@@ -54,7 +54,33 @@
 			ps.setString(8, durAuction);
 			ps.executeUpdate();
 			out.print("Item set for auction!");
-			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
+			
+					
+			// We need to find the item_id of the last item 
+			String findItemIdQuery = "SELECT item_id FROM items WHERE name = '"+itemName+"' AND sell_by_date ='" + durAuction+"'"; 
+			ResultSet findItemIdSet = stmt.executeQuery(findItemIdQuery); 
+			findItemIdSet.next(); 
+			String recentlyPostedItemId = (findItemIdSet.getString(1));
+			
+			// Send alert to users who are all interested in this item 
+			String listOfUsersInterested = "SELECT username FROM user_interests WHERE type = '"+category+"'"; 
+			ResultSet usersInterestedSet = stmt.executeQuery(listOfUsersInterested);
+			
+			while(usersInterestedSet.next()){
+				String currentUsername = usersInterestedSet.getString(1); 
+				String alertMessage = "A " + category+" you're interested in named " + itemName+" was just posted!"; 
+				String alertTableInsertion = "INSERT INTO alerts(item_id, message, username) VALUES (?, ?, ?)"; 
+				
+				PreparedStatement alertPreparedStatement = con.prepareStatement(alertTableInsertion); 
+				
+				alertPreparedStatement.setString(1, recentlyPostedItemId); 
+				alertPreparedStatement.setString(2, alertMessage); 
+				alertPreparedStatement.setString(3, currentUsername); 
+				System.out.println(alertPreparedStatement.toString()); 
+				
+				alertPreparedStatement.execute(); 
+			}
+; 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			
 		} catch (Exception ex) {

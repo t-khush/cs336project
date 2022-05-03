@@ -24,15 +24,15 @@
 <form action="InterestedPageJava.jsp">
 	<table>
 	<tr>    
-		<td><input type="checkbox" id="phone" name="phone" value="phone"></td><td><label for="vehicle1"> Phones</label></td>
+		<td><input type="checkbox" id="phone" name="typeOfDevice" value="phone"></td><td><label> Phones</label></td>
 	</tr>
 
 	<tr>
-		<td><input type="checkbox" id="laptop" name="laptop" value="laptop"></td><td><label for="vehicle2"> Laptops</label></td>
+		<td><input type="checkbox" id="laptop" name="typeOfDevice" value="laptop"></td><td><label> Laptops</label></td>
 	</tr>
 
 	<tr>
-		<td> <input type="checkbox" id="tablet" name="tablet" value="tablet"></td><td><label for="vehicle3"> Tablets</label></td>
+		<td> <input type="checkbox" id="tablet" name="typeOfDevice" value="tablet"></td><td><label> Tablets</label></td>
 	</tr>
 	</table>
 	<br>

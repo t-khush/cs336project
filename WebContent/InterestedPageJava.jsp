@@ -28,8 +28,18 @@
 
 		//Create a SQL statement
 		Statement stmt = con.createStatement();
+		
+		String typeOfDeviceSelected[] = request.getParameterValues("typeOfDevice"); 
+		for (String t: typeOfDeviceSelected){
+			String query = "INSERT INTO user_interests(type, username) VALUES (?,?)"; 
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, t); 
+			ps.setString(2, request.getSession().getAttribute("username").toString()); 
+			ps.executeUpdate(); 
+		}
         
 		//Close the connection. Don't forget to do it, otherwise you're keeping thes resources of the server allocated.
+		
 		con.close();
 		
 	} catch (Exception ex) {

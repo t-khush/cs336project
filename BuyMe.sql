@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.28, for macos11.6 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
 --
 -- Host: localhost    Database: BuyMe
 -- ------------------------------------------------------
@@ -39,6 +39,7 @@ CREATE TABLE `alerts` (
 
 LOCK TABLES `alerts` WRITE;
 /*!40000 ALTER TABLE `alerts` DISABLE KEYS */;
+INSERT INTO `alerts` VALUES (1,'A user bid higher than you on iPhone','khush'),(2,'A user bid higher than you on iPad Pro','khush'),(7,'You successfully bought use this for no initial bid .','khush'),(8,'You successfully bought 3.','khush'),(10,'You successfully bought phone user this .','khush'),(11,'You successfully bought laptop502.','khush'),(13,'You successfully bought manual automatic bid .','khush'),(14,'A user bid higher than your maximum bid cap on the item Tab','khush'),(34,'A phone you\'re interested in named phone test alert was just posted!','khush'),(1,'You successfully bought iPhone.','name1'),(6,'A user bid higher than you on galaxy','random'),(13,'A user bid higher than you on manual automatic bid ','random'),(14,'A user bid higher than you on Tab','random'),(14,'You successfully bought Tab.','random'),(7,'Your item named use this for no initial bid  was sold.','seller'),(8,'Your item named 3 was sold.','seller'),(10,'Your item named phone user this  was sold.','seller'),(11,'Your item named laptop502 was sold.','seller'),(13,'Your item named manual automatic bid  was sold.','seller'),(14,'Your item named Tab was sold.','seller');
 /*!40000 ALTER TABLE `alerts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +68,7 @@ CREATE TABLE `automatic_bid` (
 
 LOCK TABLES `automatic_bid` WRITE;
 /*!40000 ALTER TABLE `automatic_bid` DISABLE KEYS */;
-INSERT INTO `automatic_bid` VALUES (1,'khush',1200.00,10.00),(1,'hey',1250.00,10.00),(5,'khush',10.00,2.00),(6,'khush',10.00,4.00),(6,'khush',50.00,5.00),(7,'khush',10.00,1.00),(8,'khush',100.00,3.00),(1,'name',2200.00,30.00),(2,'name1',800.00,40.00);
+INSERT INTO `automatic_bid` VALUES (1,'khush',1200.00,10.00),(1,'hey',1250.00,10.00),(5,'khush',10.00,2.00),(6,'khush',10.00,4.00),(6,'khush',50.00,5.00),(7,'khush',10.00,1.00),(8,'khush',100.00,3.00),(1,'name',2200.00,30.00),(2,'name1',800.00,40.00),(2,'khush',900.00,10.00),(11,'khush',5.00,1.00),(11,'khush',10000.00,242.00),(12,'khush',10.00,2.00),(12,'random',560.00,6.00),(13,'khush',1000.00,10.00),(14,'khush',5.00,2.00);
 /*!40000 ALTER TABLE `automatic_bid` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +96,7 @@ CREATE TABLE `bid_history` (
 
 LOCK TABLES `bid_history` WRITE;
 /*!40000 ALTER TABLE `bid_history` DISABLE KEYS */;
-INSERT INTO `bid_history` VALUES (2,620.00,'khush'),(5,3.00,'khush'),(6,5.00,'khush'),(6,6.00,'name'),(6,10.00,'khush'),(6,11.00,'khush'),(6,14.00,'name'),(7,2.00,'khush'),(8,2.00,'name'),(8,5.00,'khush'),(8,6.00,'name'),(8,9.00,'khush'),(1,1010.00,'khush'),(1,1200.00,'name1'),(2,660.00,'name1'),(2,680.00,'name'),(2,720.00,'name1');
+INSERT INTO `bid_history` VALUES (2,620.00,'khush'),(5,3.00,'khush'),(6,5.00,'khush'),(6,6.00,'name'),(6,10.00,'khush'),(6,11.00,'khush'),(6,14.00,'name'),(7,2.00,'khush'),(8,2.00,'name'),(8,5.00,'khush'),(8,6.00,'name'),(8,9.00,'khush'),(1,1010.00,'khush'),(1,1200.00,'name1'),(2,660.00,'name1'),(2,680.00,'name'),(2,720.00,'name1'),(10,2.00,'khush'),(11,2.00,'khush'),(12,3.00,'khush'),(13,5.00,'random'),(13,15.00,'khush'),(2,785.00,'khush'),(2,1000.00,'random'),(2,1500.00,'khush'),(6,25.00,'random'),(6,50.00,'khush'),(2,2000.00,'random'),(14,2.00,'random'),(14,4.00,'khush'),(14,1100.00,'random');
 /*!40000 ALTER TABLE `bid_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +122,7 @@ CREATE TABLE `items` (
   PRIMARY KEY (`item_id`),
   KEY `username` (`username`),
   CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +131,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'iPhone','phone','good iphone','plolla',200.00,10.00,1200.00,'2022-05-02 18:31:00',NULL,NULL),(2,'iPad Pro','tablet','hello this is good ipad','plolla',555.00,4.00,720.00,'2022-05-04 18:32:00',NULL,NULL),(3,'iPhone 2','phone','this is good iphone','plolla',333.00,3.00,333.00,'2022-04-28 19:54:00',1,NULL),(4,'iphone use thies','phone','test',NULL,1.00,1.00,1.00,'2022-05-07 21:02:00',0,NULL),(5,'a','phone','a phone','seller',1.00,1.00,1.00,'2022-05-07 21:03:00',0,NULL),(6,'galaxy','laptop','galaxy','seller',1.00,1.00,14.00,'2022-05-07 21:44:00',0,NULL),(7,'use this for no initial bid ','phone','na','seller',1.00,1.00,2.00,'2022-04-30 21:52:00',0,NULL),(8,'3',NULL,'name first manual, khush auto, name manual','seller',1.00,1.00,9.00,'2022-04-30 21:53:00',0,NULL),(9,'iPhone','phone','this is a good iphone ','plolla',222.00,2.00,222.00,'2022-05-01 22:06:00',0,NULL);
+INSERT INTO `items` VALUES (1,'iPhone','phone','good iphone','plolla',200.00,10.00,1200.00,'2022-05-02 18:31:00',1,NULL),(2,'iPad Pro','tablet','hello this is good ipad','plolla',555.00,4.00,2000.00,'2022-05-04 18:32:00',NULL,NULL),(3,'iPhone 2','phone','this is good iphone','plolla',333.00,3.00,333.00,'2022-04-28 19:54:00',1,NULL),(4,'iphone use thies','phone','test',NULL,1.00,1.00,1.00,'2022-05-07 21:02:00',0,NULL),(5,'a','phone','a phone','seller',1.00,1.00,1.00,'2022-05-07 21:03:00',0,NULL),(6,'galaxy','laptop','galaxy','seller',1.00,1.00,50.00,'2022-05-07 21:44:00',0,NULL),(7,'use this for no initial bid ','phone','na','seller',1.00,1.00,2.00,'2022-04-30 21:52:00',1,NULL),(8,'3',NULL,'name first manual, khush auto, name manual','seller',1.00,1.00,9.00,'2022-04-30 21:53:00',1,NULL),(9,'iPhone','phone','this is a good iphone ','plolla',222.00,2.00,222.00,'2022-05-01 22:06:00',1,NULL),(10,'phone user this ','phone','hey','seller',1.00,1.00,2.00,'2022-05-01 22:59:00',1,NULL),(11,'laptop502','laptop','hey buy','seller',1.00,1.00,2.00,'2022-05-03 00:10:00',1,NULL),(12,'hey','tablet','hey','seller',1.00,1.00,3.00,'2022-05-03 12:15:00',0,NULL),(13,'manual automatic bid ','tablet','','seller',1.00,1.00,15.00,'2022-05-02 00:22:00',1,NULL),(14,'Tab','tablet','Manual then Automatic','seller',1.00,1.00,1100.00,'2022-05-02 14:59:00',1,NULL),(16,'hey','laptop','','seller',1.00,1.00,1.00,'2022-05-03 01:56:00',1,NULL),(19,'test',NULL,'','seller',1.00,1.00,1.00,'2022-05-03 01:58:00',1,NULL),(21,'test2',NULL,'','seller',1.00,1.00,1.00,'2022-05-03 01:57:00',1,NULL),(23,'hey','tablet','hey','seller',1.00,1.00,1.00,'2022-05-03 01:03:00',1,NULL),(25,'testing','tablet','','seller',1.00,1.00,1.00,'2022-05-03 02:03:00',1,NULL),(27,'testing','laptop','','seller',1.00,1.00,1.00,'2022-05-03 03:03:00',0,NULL),(28,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL),(29,'testengie','tablet','e','seller',1.00,1.00,1.00,'2022-05-03 04:08:00',0,NULL),(30,'e','tablet','','seller',1.00,1.00,1.00,'2022-05-03 05:09:00',0,NULL),(31,'rgr','tablet','','seller',1.00,1.00,1.00,'2022-05-03 05:10:00',0,NULL),(32,'iphone alert type','phone','','seller',1.00,1.00,1.00,'2022-05-03 04:16:00',0,NULL),(33,'jte','phone','','seller',1.00,1.00,1.00,'2022-05-03 03:15:00',0,NULL),(34,'phone test alert','phone','','seller',1.00,1.00,1.00,'2022-05-03 02:19:00',0,NULL);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,8 +155,32 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('e','e'),('hey','hey'),('khush','khush'),('name','name'),('name1','name1'),('plolla','hello'),('seller','seller');
+INSERT INTO `user` VALUES ('e','e'),('hey','hey'),('khush','khush'),('name','name'),('name1','name1'),('plolla','hello'),('random','random'),('seller','seller');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_interests`
+--
+
+DROP TABLE IF EXISTS `user_interests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_interests` (
+  `type` varchar(30) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  PRIMARY KEY (`type`,`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_interests`
+--
+
+LOCK TABLES `user_interests` WRITE;
+/*!40000 ALTER TABLE `user_interests` DISABLE KEYS */;
+INSERT INTO `user_interests` VALUES ('laptop','khush'),('phone','khush');
+/*!40000 ALTER TABLE `user_interests` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -167,4 +192,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-01 22:43:57
+-- Dump completed on 2022-05-03  2:16:49
