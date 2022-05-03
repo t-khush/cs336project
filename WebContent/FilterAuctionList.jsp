@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>BuyMe: Auction List</title>
+<title>BuyMe: FiltersAuction List</title>
 </head>
 <style>
 		h1 {margin-top: 0px; font-size:30px;}

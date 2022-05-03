@@ -23,6 +23,10 @@
 <center><body>	
 <h1 style="font-size:25px"><strong> Alert List</strong></h1>
 <br></br>
+<form style='text:align=center' action="InterestedPage.jsp">
+	<input type="submit" style="font-size:15px;height:30px;width:180px" value="Interested in an Item?">
+</form>
+<br><br>
 		<%
 		try {
 

@@ -15,7 +15,7 @@
 		a:visited {color: black; text-decoration: none;}
 		a:hover {color: black; text-decoration: underline;}
 		table {border-collapse: collapse; width: 40%}
-		td { border: 1px solid #dddddd; text-align: left; padding: 8px; font-size: 18px;}
+		td { border: 1px solid #dddddd; text-align: left; padding: 8spx; font-size: 18px;}
 		tr:nth-child(even) { background-color: #dddddd;}
 		.button-container form, .button-container form div { display: inline; }
 		.button-container button { display: inline; vertical-align: middle;}
