@@ -23,9 +23,34 @@
 <center><body>	
 <h1 style="font-size:25px"><strong> Auction List</strong></h1>
 <br></br>
-<form action="FilterPage.jsp">
+<div class='button-container'>
+<form style='text:align=center' action="FilterPage.jsp">
 	<input type="submit" style="font-size:15px;height:30px;width:75px" value="Filter">
 </form>
+<br>
+<form style='text:align=center' action="FilterPageHightoLow.jsp">
+	<input type="submit" style="font-size:15px;height:30px;width:200px" value="Sort Price: High to Low">
+</form>
+<br>
+<form style='text:align=center' action="FilterPageLowtoHigh.jsp">
+	<input type="submit" style="font-size:15px;height:30px;width:200px" value="Sort Price: Low to High">
+</form>
+</div>
+
+<!-- 	            out.println("<div class='button-container'>");
+	            out.println("<form style='text:align=center' action='ManualBidPage.jsp'>");
+	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
+	            out.println("</form>");
+
+	    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
+	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
+	            out.println("</form>");
+	            
+	            // Place Automatic Bid Button
+	            out.println("<form style='text:align=center' action='AutomaticBidPage.jsp'>");
+	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Automatic Bid'>");
+	            out.println("</form>");
+	            out.println("</div>"); -->
 <br>
 		<%
 		try {

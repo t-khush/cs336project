@@ -55,13 +55,14 @@
 			String minPrice = request.getParameter("filter_min_price");
 			String maxPrice = request.getParameter("filter_max_price");
 			String query = "";
+	
 			
 			if (category.equals("allItems")) {
 				if (!minPrice.equals("") && !maxPrice.equals("")) {
-					query = "select name, item_id from items where bought is not true and current_price >= " + minPrice + " and currentPrice <= " + maxPrice;
+					query = "select name, item_id from items where bought is not true and current_price >= " + minPrice + " and current_price <= " + maxPrice;
 				}
 				else if (minPrice.equals("") && !maxPrice.equals("")) {
-					query = "select name, item_id from items where bought is not true and currentPrice <= " + maxPrice;
+					query = "select name, item_id from items where bought is not true and current_price <= " + maxPrice;
 				}
 				else if (!minPrice.equals("") && maxPrice.equals("")) {
 					query = "select name, item_id from items where bought is not true and current_price >= " + minPrice;
