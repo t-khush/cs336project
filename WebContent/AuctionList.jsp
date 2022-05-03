@@ -23,6 +23,10 @@
 <center><body>	
 <h1 style="font-size:25px"><strong> Auction List</strong></h1>
 <br></br>
+<form action="FilterPage.jsp">
+	<input type="submit" style="font-size:15px;height:30px;width:75px" value="Filter">
+</form>
+<br>
 		<%
 		try {
 

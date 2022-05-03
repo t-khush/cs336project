@@ -133,6 +133,9 @@
 	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
 	            out.println("</form>");
 
+	    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
+	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
+	            out.println("</form>");
 	            
 	            // Place Automatic Bid Button
 	            out.println("<form style='text:align=center' action='AutomaticBidPage.jsp'>");
@@ -142,6 +145,9 @@
 				
 			}
 			else{
+	    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
+	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
+	            out.println("</form>");
 				out.println("<p>You cannot buy your own item</p>");
 			}
 			
@@ -179,12 +185,7 @@
 	        out.println("<tr>");
 	        out.println("<td><strong> Sell-By Date </strong></td><td><p>" + result.getString(9)+"</p></td>");
 	        out.println("</tr>");
-    		out.println("<br>");
-    		out.println("<br>");
     		
-    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
-            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
-            out.println("</form>");
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			
