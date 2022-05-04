@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>BuyMe: Login</title>
+		<title>BuyMe: Search Users</title>
 	</head>
 	
 	<style>
@@ -19,20 +19,23 @@
 	<div class="h1"><h1 style="font-size:30px"><strong> <a href="Home.jsp"> BuyMe </a> </strong></h1></div>
 	
 	<center><body>
-		<h3 style="font-size:25px"><strong> Login </strong></h3>
-		<form method="get" action="LoginJava.jsp">
+		<h3 style="font-size:25px"><strong> Search User Activity </strong></h3>
+		<form method="get" action="SearchUsersSuccess.jsp">
 			<table>
 				<tr>    
-					<td>Username: </td><td><input type="text" name="username"></td>
-				</tr>
-				<tr>
-					<td>Password: </td><td><input type="password" name="password"></td>
+					<td>Username: </td><td><input type="text" name="searched_user"></td>
 				</tr>
 			</table>
-			<br>
-			<input type="submit" style="font-size:15px;height:30px;width:100px" value="Login">
+			<br> 
+			<select name = "type_of_user">
+		    <option value="" disabled="disabled" selected="selected">See what items they </option>
+		    <option value="bid" name = "bid">bid</option>
+		    <option value="sold" name = "sold">sold</option>
+			</select>
+			<br><br>
+			<input type="submit" style="font-size:15px;height:30px;width:100px" value="Search">
 		</form>
-
+		
 	
 </body></center>
 </html>

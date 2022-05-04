@@ -35,6 +35,10 @@
 <form style='text:align=center' action="FilterPageLowtoHigh.jsp">
 	<input type="submit" style="font-size:15px;height:30px;width:200px" value="Sort Price: Low to High">
 </form>
+<br>
+<form style='text:align=center' action="SearchUsers.jsp">
+	<input type="submit" style="font-size:15px;height:30px;width:200px" value="Search Users">
+</form>
 </div>
 
 <!-- 	            out.println("<div class='button-container'>");
@@ -240,7 +244,6 @@
 	</form>
 
 <br><br>
-
 <br></br>
 </body></center>
 </html>
