@@ -34,22 +34,27 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
-			//ResultSetMetaData metaData = result.getMetaData();
-	        long millis=System.currentTimeMillis();
-	        java.sql.Timestamp time = new java.sql.Timestamp(millis); 
-         	String currentTimeStamp = time.toString();
-         	
-         	String update = "UPDATE items SET bought = true WHERE ? >= sell_by_date";
-		
-         	PreparedStatement ps = con.prepareStatement(update);
-
-			//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-			ps.setString(1, currentTimeStamp);
-			ps.executeUpdate();
-			
 			String username = (String)request.getSession().getAttribute("username");
 			String checkIfUserIsCustomerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
 			ResultSet checkIfUserIsCustomerRepResults = stmt.executeQuery(checkIfUserIsCustomerRepQuery);
+						
+			String submittedQuestion = request.getParameter("ask_question");
+			request.getSession().setAttribute("submittedQuestion", submittedQuestion);
+			
+			String q = "select * from questions where question = '" + submittedQuestion + "'";
+			ResultSet checkQuestionDup = stmt.executeQuery(q);
+
+
+			if(submittedQuestion != null && !checkQuestionDup.next()){
+				String insert = "INSERT INTO questions(username, question)"
+						+ "VALUES (?, ?)";
+
+				PreparedStatement ps = con.prepareStatement(insert);
+				
+				ps.setString(1, username);
+				ps.setString(2, submittedQuestion);
+				ps.executeUpdate();
+			}
 			
 			out.println("<form style='text:align=center' action='AskQuestion.jsp'>");
 			out.println("<input type='submit' style='font-size:15px;height:30px;width:180px' value='Ask a Question'>");
