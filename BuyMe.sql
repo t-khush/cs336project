@@ -3,6 +3,7 @@
 -- Host: localhost    Database: BuyMe
 -- ------------------------------------------------------
 -- Server version	8.0.28
+use buyme; 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -193,3 +194,7 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-05-03  2:16:49
+
+select items.name, bid_history.item_id, bid_history.bidder from bid_history, items where items.item_id = bid_history.item_id and bid_history.bidder = "khush" group by bid_history.item_id;
+
+select * from items where username = 'khush';
