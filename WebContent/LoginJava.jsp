@@ -25,19 +25,28 @@
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		request.getSession().setAttribute("username", username);
-
 		String query = "select * from user where username = \"" + username + "\" and " + "password = \"" + password + "\"";
 		
         ResultSet result = stmt.executeQuery(query);
         boolean inDb = result.first();
        
         if(inDb) {
-    		//out.print("Sign in succeeded!");
+        	request.getSession().setAttribute("userisCustomerRep", "false");
     		response.sendRedirect("LoginSuccess.jsp");
         }
         else{
-        	//out.print("Sign in failed. The username or password you entered is not correct.");
-        	response.sendRedirect("LoginFailed.jsp");
+        	// check if user is a customer rep
+			Statement stmt2 = con.createStatement();
+        	String customerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
+        	ResultSet customerRepQueryResult = stmt2.executeQuery(customerRepQuery);
+        	if (result.first()) {
+        		request.getSession().setAttribute("userisCustomerRep", "true");
+        		response.sendRedirect("CustomerRepHomePage.jsp");
+        	}
+        	else {
+        		response.sendRedirect("LoginFailed.jsp");
+        	}
+        	
         }
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
