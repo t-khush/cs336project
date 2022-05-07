@@ -29,7 +29,8 @@ CREATE TABLE `alerts` (
   PRIMARY KEY (`item_id`,`message`,`username`),
   KEY `username` (`username`),
   CONSTRAINT `alerts_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`),
-  CONSTRAINT `alerts_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
+  CONSTRAINT `alerts_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`),
+  CONSTRAINT `alerts_ibfk_3` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -58,7 +59,8 @@ CREATE TABLE `automatic_bid` (
   KEY `item_id` (`item_id`),
   KEY `bidder` (`bidder`),
   CONSTRAINT `automatic_bid_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`),
-  CONSTRAINT `automatic_bid_ibfk_2` FOREIGN KEY (`bidder`) REFERENCES `user` (`username`)
+  CONSTRAINT `automatic_bid_ibfk_2` FOREIGN KEY (`bidder`) REFERENCES `user` (`username`),
+  CONSTRAINT `automatic_bid_ibfk_3` FOREIGN KEY (`bidder`) REFERENCES `user` (`username`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,7 +88,8 @@ CREATE TABLE `bid_history` (
   KEY `bidder` (`bidder`),
   KEY `item_id` (`item_id`),
   CONSTRAINT `bid_history_ibfk_1` FOREIGN KEY (`bidder`) REFERENCES `user` (`username`),
-  CONSTRAINT `bid_history_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`)
+  CONSTRAINT `bid_history_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`),
+  CONSTRAINT `bid_history_ibfk_3` FOREIGN KEY (`bidder`) REFERENCES `user` (`username`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -145,7 +148,8 @@ CREATE TABLE `items` (
   `reserve_price` float(15,2) DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `username` (`username`),
-  CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
+  CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`),
+  CONSTRAINT `items_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -172,7 +176,8 @@ CREATE TABLE `questions` (
   `question` varchar(600) DEFAULT NULL,
   PRIMARY KEY (`question_id`),
   KEY `username` (`username`),
-  CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
+  CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`),
+  CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -250,7 +255,9 @@ DROP TABLE IF EXISTS `user_interests`;
 CREATE TABLE `user_interests` (
   `type` varchar(30) NOT NULL,
   `username` varchar(30) NOT NULL,
-  PRIMARY KEY (`type`,`username`)
+  PRIMARY KEY (`type`,`username`),
+  KEY `username` (`username`),
+  CONSTRAINT `user_interests_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -273,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-07  1:33:45
+-- Dump completed on 2022-05-07  3:45:09

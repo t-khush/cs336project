@@ -33,7 +33,7 @@ out.print("Welcome to BuyMe, " + customerRepName);
 </form> 
 <br><br>
 <form action="AccountList.jsp">
-	<input type="submit" style="font-size:15px;height:50px;width:200px" value="Accounts">
+	<input type="submit" style="font-size:15px;height:50px;width:200px" value="Users">
 </form> 
 <br></br><br></br>
 <form action="Home.jsp">

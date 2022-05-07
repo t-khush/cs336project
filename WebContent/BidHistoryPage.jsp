@@ -20,8 +20,6 @@
 		.button-container form, .button-container form div { display: inline; }
 		.button-container button { display: inline; vertical-align: middle;}
 </style>
-	<div class="h1"><h1><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
-<center><body>	
 	<%
 		try {
 
@@ -31,7 +29,16 @@
 			
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
-			
+			String username = (String)request.getSession().getAttribute("username");
+			String checkIfUserIsCustomerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
+			ResultSet checkIfUserIsCustomerRepResults = stmt.executeQuery(checkIfUserIsCustomerRepQuery);
+			if (checkIfUserIsCustomerRepResults.next()) {
+				out.println("<div class='h1'><h1><a href='CustomerRepHomePage.jsp'> BuyMe </a></h1></div>");
+			}
+			else {
+				out.println("<div class='h1'><h1><a href='LoginSuccess.jsp'> BuyMe </a></h1></div>");
+			}
+			out.println("<center><body>");
 			String num = (String)request.getSession().getAttribute("itemNum");
 			String itemID = (String)request.getSession().getAttribute("selectedItemID" + num);
 			request.getSession().setAttribute("itemid", itemID);

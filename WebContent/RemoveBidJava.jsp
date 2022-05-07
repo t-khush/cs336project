@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>BuyMe: Remove Item</title>
+<title>BuyMe: Remove Bid</title>
 </head>
 <style>
 		h1 {margin-top: 0px;}

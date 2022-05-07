@@ -149,6 +149,7 @@
 		    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
 		            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
 		            out.println("</form>");
+		            out.println("</div>");
 				}
 				else {
 					
