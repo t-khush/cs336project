@@ -144,12 +144,13 @@ if (!checkIfUserIsCustomerRepResults.next()) {
 			
 			// Alert users who have successfully bought an item
 			// Find all item ids, iterate through them and add alerts 
-			String allBoughtItems = "SELECT item_id, name FROM items WHERE bought = TRUE"; 
+			String allBoughtItems = "SELECT item_id, name, type FROM items WHERE bought = TRUE"; 
 			ResultSet allBoughtItemsResult = stmt.executeQuery(allBoughtItems);
 			Statement stmt2 = con.createStatement();
+			String soldPrice = "5.00";
 			while(allBoughtItemsResult.next()){
 				String boughtString = "You successfully bought " + allBoughtItemsResult.getString(2) + "."; 
-				String findTheBuyer = "select bidder from bid_history where item_id = " + allBoughtItemsResult.getString(1)+ " order by current_bid desc limit 1"; 
+				String findTheBuyer = "select bidder, current_bid from bid_history where item_id = " + allBoughtItemsResult.getString(1)+ " order by current_bid desc limit 1"; 
 				ResultSet buyerOfItem = stmt2.executeQuery(findTheBuyer);
 				
 				Statement stmt4 = con.createStatement(); 
@@ -161,8 +162,11 @@ if (!checkIfUserIsCustomerRepResults.next()) {
 					ResultSet lastBidPriceResult = stmt4.executeQuery(lastBidPriceQuery); 
 					if(lastBidPriceResult.next()){
 						float lastBid = Float.parseFloat(lastBidPriceResult.getString(1)); 
+						System.out.println(lastBid);
 						if(lastBid<price){
 							continue; 
+						}
+						else {
 						}
 					}
 				}
@@ -176,7 +180,15 @@ if (!checkIfUserIsCustomerRepResults.next()) {
 					boughtItemAlertStatement.setString(3, buyerOfItem.getString(1)); 
 					
 					boughtItemAlertStatement.executeUpdate(); 
-	
+					
+					String insertIntoBoughtItems = "INSERT IGNORE INTO bought_items(item_id, category, price, buyer) VALUES (?, ?, ?, ?)";
+					PreparedStatement boughtItemsStatement = con.prepareStatement(insertIntoBoughtItems);
+					boughtItemsStatement.setString(1, allBoughtItemsResult.getString(1));
+					boughtItemsStatement.setString(2, allBoughtItemsResult.getString(3)); 
+					boughtItemsStatement.setString(3, buyerOfItem.getString(2)); 
+					boughtItemsStatement.setString(4, buyerOfItem.getString(1)); 
+					boughtItemsStatement.executeUpdate(); 
+					
 				}
 				
 			}
