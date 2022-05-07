@@ -19,10 +19,6 @@
 		td { border: 1px solid #dddddd; text-align: center; padding: 11px;}
 		tr:nth-child(even) { background-color: #dddddd;}
 	</style>
-	<div class="h1"><h1><a href="LoginSuccess.jsp"> BuyMe </a></h1></div>
-<center><body>	
-<h1 style="font-size:25px"><strong> Questions </strong></h1>
-<br>
 
 		<%
 		try {
@@ -34,10 +30,19 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			Statement stmt2 = con.createStatement();
-			
 			String username = (String)request.getSession().getAttribute("username");
 			String checkIfUserIsCustomerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
 			ResultSet checkIfUserIsCustomerRepResults = stmt.executeQuery(checkIfUserIsCustomerRepQuery);
+			if (checkIfUserIsCustomerRepResults.next()) {
+				out.println("<div class='h1'><h1><a href='CustomerRepHomePage.jsp'> BuyMe </a></h1></div>");
+			}
+			else {
+				out.println("<div class='h1'><h1><a href='LoginSuccess.jsp'> BuyMe </a></h1></div>");
+			}
+			
+			out.println("<center><body>");
+			out.println("<h1 style='font-size:25px'><strong> Questions </strong></h1>");
+			
 						
 			String submittedQuestion = request.getParameter("ask_question");
 			request.getSession().setAttribute("submittedQuestion", submittedQuestion);
@@ -56,7 +61,7 @@
 				ps.setString(2, submittedQuestion);
 				ps.executeUpdate();
 			}
-			
+			checkIfUserIsCustomerRepResults.beforeFirst();
 			if (!checkIfUserIsCustomerRepResults.next()) {
 				out.println("<form style='text:align=center' action='AskQuestion.jsp'>");
 				out.println("<input type='submit' style='font-size:15px;height:30px;width:180px' value='Ask a Question'>");

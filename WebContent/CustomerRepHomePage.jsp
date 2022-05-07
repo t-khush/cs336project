@@ -20,12 +20,12 @@
 <br>
 <%
 //Get parameters from the HTML form at the index.jsp
-String customerRepName = (String)request.getSession().getAttribute("customerRepName");
+String customerRepName = (String)request.getSession().getAttribute("username");
 out.print("Welcome to BuyMe, " + customerRepName);
 %>
 <br><br><br>
 <form action="QuestionsPage.jsp">
-	<input type="submit" style="font-size:15px;height:50px;width:300px" value="Questions">
+	<input type="submit" style="font-size:15px;height:50px;width:200px" value="Questions">
 </form> 
 <br><br>
 <form action="SalesReportMain.jsp">
