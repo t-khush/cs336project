@@ -34,37 +34,47 @@
 			
 			String num = (String)request.getSession().getAttribute("itemNum");
 			String itemID = (String)request.getSession().getAttribute("selectedItemID" + num);
+			request.getSession().setAttribute("itemid", itemID);
 			String itemName = (String)request.getSession().getAttribute("selectedItemName"+num);
 			//out.println("hello");
 			String query = "select bidder, current_bid from bid_history where item_id = " + itemID;
 			ResultSet result = stmt.executeQuery(query);
 			
 			out.println("<h1 style='font-size:30px'><strong>" + itemName + " Bid History</strong></h1>");
+			out.println("<br><br>");
+			if (!result.next()) {
+				out.println("<h2 style='font-size:25px'><strong>No Bids Have Been Placed!</strong></h1>");
+			}
+			else {
+				out.println("<br>");
+				// ITEM DETAILS
+				out.println("<table>");
+				out.println("<tr>");
+		        out.println("<td><strong> Bidder </strong></td><td><strong> Bid </strong></td>");
+		        out.println("</tr>");
+	       		int i = 1;
+	       		result.beforeFirst();
+	   	        while(result.next()) {
+	   	        	if (i % 2 != 0) {
+	   	        		out.println("<tr>");
+	   	        		out.println("<td><p> " + result.getString(1) + "</p></td><td><p><a style='font-size:18px' href='ViewBid.jsp?num="+ i + "'>" + result.getString(2)+"</a></p></td>");
+	   	        		request.getSession().setAttribute("selectedBidder"+i, result.getString(1));
+				        request.getSession().setAttribute("selectedBidAmount"+i, result.getString(2));
+	   	        		out.println("</tr>");
+	   	        	}
+	   	        	else {
+	   	        		out.println("<tr>");
+	   	        		out.println("<td><p>" + result.getString(1) + "</p></td><td><p><a style='font-size:18px' href='ViewBid.jsp?num="+ i + "'>" + result.getString(2)+"</a></p></td>");
+	   	        		request.getSession().setAttribute("selectedBidder"+i, result.getString(1));
+				        request.getSession().setAttribute("selectedBidAmount"+i, result.getString(2));
+	   	        		out.println("</tr>");
+	   	        	}
+	   	        	i++;
+	   	        }
+	   	        out.println("</table>");
+	   	        out.println("</form>");
+			}
 			
-			
-			out.println("<br>");
-			// ITEM DETAILS
-			out.println("<table>");
-			out.println("<tr>");
-	        out.println("<td><strong> Bidder </strong></td><td><strong> Bid </strong></td>");
-	        out.println("</tr>");
-       		int i = 1;
-       		result.beforeFirst();
-   	        while(result.next()) {
-   	        	if (i % 2 != 0) {
-   	        		out.println("<tr>");
-   	        		out.println("<td><p> " + result.getString(1) + "</p></td><td><p>" + result.getString(2)+"</p></td>");
-   	        		out.println("</tr>");
-   	        	}
-   	        	else {
-   	        		out.println("<tr>");
-   	        		out.println("<td><p>" + result.getString(1) + "</p></td><td><p>" + result.getString(2)+"</p></td>");
-   	        		out.println("</tr>");
-   	        	}
-   	        	i++;
-   	        }
-   	        out.println("</table>");
-   	        out.println("</form>");
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			

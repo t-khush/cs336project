@@ -20,8 +20,6 @@
 		.button-container form, .button-container form div { display: inline; }
 		.button-container button { display: inline; vertical-align: middle;}
 </style>
-	<div class="h1"><h1><strong> <a href="LoginSuccess.jsp"> BuyMe </a> </strong></h1></div>
-<center><body>	
 	<%
 		try {
 
@@ -37,9 +35,22 @@
 			request.getSession().setAttribute("itemNum", num);
 			
 			String itemid = (String)request.getSession().getAttribute("selectedItemID" + num);
+			request.getSession().setAttribute("itemid", itemid);
 			String itemName = (String)request.getSession().getAttribute("selectedItemName"+num);
+			request.getSession().setAttribute("itemName", itemName);
 			String username = (String)request.getSession().getAttribute("username");
 			
+			Statement stmtCR = con.createStatement();
+			String checkIfUserIsCustomerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
+			ResultSet checkIfUserIsCustomerRepResults = stmtCR.executeQuery(checkIfUserIsCustomerRepQuery);
+			if (checkIfUserIsCustomerRepResults.next()) {
+				out.println("<div class='h1'><h1><a href='CustomerRepHomePage.jsp'> BuyMe </a></h1></div>");
+			}
+			else {
+				out.println("<div class='h1'><h1><a href='LoginSuccess.jsp'> BuyMe </a></h1></div>");
+			}
+			
+			out.println("<center><body>");
 			String query = "select * from items where item_id = \"" + itemid + "\"";
 			ResultSet result = stmt.executeQuery(query);
 			ResultSetMetaData resultMetaData = result.getMetaData();
@@ -127,21 +138,36 @@
 			out.println("<h3 style='font-size:22px'><strong> Current Price: $" + result.getString(8) + "</strong></h3>");
 			
 			if (!seller.equals(username)) {
-				// Place Manual Bid Button
-	            out.println("<div class='button-container'>");
-	            out.println("<form style='text:align=center' action='ManualBidPage.jsp'>");
-	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
-	            out.println("</form>");
+				
+				checkIfUserIsCustomerRepResults.beforeFirst();
+				if (checkIfUserIsCustomerRepResults.next()) {
+					out.println("<div class='button-container'>");
+		            out.println("<form style='text:align=center' action='RemoveItemJava.jsp'>");
+		            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Remove Item'>");
+		            out.println("</form>");
 
-	    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
-	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
-	            out.println("</form>");
-	            
-	            // Place Automatic Bid Button
-	            out.println("<form style='text:align=center' action='AutomaticBidPage.jsp'>");
-	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Automatic Bid'>");
-	            out.println("</form>");
-	            out.println("</div>");
+		    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
+		            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
+		            out.println("</form>");
+				}
+				else {
+					
+					out.println("<div class='button-container'>");
+		            out.println("<form style='text:align=center' action='ManualBidPage.jsp'>");
+		            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
+		            out.println("</form>");
+
+		    		out.println("<form style='text:align=center' action='BidHistoryPage.jsp'>");
+		            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='View Bid History'>");
+		            out.println("</form>");
+		            
+		            // Place Automatic Bid Button
+		            out.println("<form style='text:align=center' action='AutomaticBidPage.jsp'>");
+		            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Automatic Bid'>");
+		            out.println("</form>");
+		            out.println("</div>");
+				}
+	            out.println("<br><br>");
 				
 			}
 			else{

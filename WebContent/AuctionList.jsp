@@ -19,28 +19,52 @@
 		td { border: 1px solid #dddddd; text-align: center; padding: 11px;}
 		tr:nth-child(even) { background-color: #dddddd;}
 	</style>
-	<div class="h1"><h1><a href="LoginSuccess.jsp"> BuyMe </a></h1></div>
-<center><body>	
-<h1 style="font-size:25px"><strong> Auction List</strong></h1>
-<br></br>
-<div class='button-container'>
-<form style='text:align=center' action="FilterPage.jsp">
-	<input type="submit" style="font-size:15px;height:30px;width:75px" value="Filter">
-</form>
-<br>
-<form style='text:align=center' action="FilterPageHightoLow.jsp">
-	<input type="submit" style="font-size:15px;height:30px;width:200px" value="Sort Price: High to Low">
-</form>
-<br>
-<form style='text:align=center' action="FilterPageLowtoHigh.jsp">
-	<input type="submit" style="font-size:15px;height:30px;width:200px" value="Sort Price: Low to High">
-</form>
-<br>
-<form style='text:align=center' action="SearchUsers.jsp">
-	<input type="submit" style="font-size:15px;height:30px;width:200px" value="Search Users">
-</form>
-</div>
+<%
+//Get the database connection
+ApplicationDB db = new ApplicationDB();	
+Connection con = db.getConnection();
 
+//Create a SQL statement
+Statement stmt = con.createStatement();
+String username = (String)request.getSession().getAttribute("username");
+String checkIfUserIsCustomerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
+ResultSet checkIfUserIsCustomerRepResults = stmt.executeQuery(checkIfUserIsCustomerRepQuery);
+if (checkIfUserIsCustomerRepResults.next()) {
+	out.println("<div class='h1'><h1><a href='CustomerRepHomePage.jsp'> BuyMe </a></h1></div>");
+}
+else {
+	out.println("<div class='h1'><h1><a href='LoginSuccess.jsp'> BuyMe </a></h1></div>");
+}
+out.println("<center><body>");
+out.println("<h1 style='font-size:25px'><strong> Auction List</strong></h1>");
+out.println("<br>");
+
+checkIfUserIsCustomerRepResults.beforeFirst();
+if (!checkIfUserIsCustomerRepResults.next()) {
+	
+	out.println("<div class='button-container'>");
+	out.println("<form style='text:align=center' action='FilterPage.jsp'>");
+	out.println("</form>");
+	out.println("<br>");
+
+	out.println("<form style='text:align=center' action='FilterPageHightoLow.jsp'>");
+	out.println("<input type='submit' style='font-size:15px;height:30px;width:200px' value='Sort Price: High to Low'>");
+	out.println("</form>");
+	out.println("<br>");
+
+	out.println("<form style='text:align=center' action='FilterPageLowtoHigh.jsp'>");
+	out.println("<input type='submit' style='font-size:15px;height:30px;width:200px' value='Sort Price: Low to High'>");
+	out.println("</form>");
+	out.println("<br>");
+
+	out.println("<form style='text:align=center' action='SearchUsers.jsp'>");
+	out.println("<input type='submit' style='font-size:15px;height:30px;width:200px' value='Search Users'>");
+	out.println("</form>");
+	out.println("</div>");
+}
+
+
+%>
 <!-- 	            out.println("<div class='button-container'>");
 	            out.println("<form style='text:align=center' action='ManualBidPage.jsp'>");
 	            out.println("<input type='submit' style='font-size:15px;height:30px;width:150px' value='Place Manual Bid'>");
@@ -60,12 +84,13 @@
 		try {
 
 			//Get the database connection
+			/*
 			ApplicationDB db = new ApplicationDB();	
 			Connection con = db.getConnection();
 			
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
-			
+			*/
 			//ResultSetMetaData metaData = result.getMetaData();
 	        long millis=System.currentTimeMillis();
 	        java.sql.Timestamp time = new java.sql.Timestamp(millis); 
@@ -84,7 +109,6 @@
 			// Alerts 
 			// Alert users who have successfully sold an item 
 			
-			String username = (String)request.getSession().getAttribute("username");
 			String soldItemQuery = "SELECT item_id, name FROM items WHERE bought = TRUE AND username = '" + username + "'"; // Query for items sold by logged in user
 			ResultSet soldItemResults = stmt.executeQuery(soldItemQuery);
 			while(soldItemResults.next()){

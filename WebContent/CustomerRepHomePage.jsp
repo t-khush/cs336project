@@ -28,8 +28,12 @@ out.print("Welcome to BuyMe, " + customerRepName);
 	<input type="submit" style="font-size:15px;height:50px;width:200px" value="Questions">
 </form> 
 <br><br>
-<form action="SalesReportMain.jsp">
-	<input type="submit" style="font-size:15px;height:50px;width:200px" value="Sales Report">
+<form action="AuctionList.jsp">
+	<input type="submit" style="font-size:15px;height:50px;width:200px" value="Auctions">
+</form> 
+<br><br>
+<form action="AccountList.jsp">
+	<input type="submit" style="font-size:15px;height:50px;width:200px" value="Accounts">
 </form> 
 <br></br><br></br>
 <form action="Home.jsp">
