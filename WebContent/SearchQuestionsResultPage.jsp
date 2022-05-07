@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>BuyMe: Questions</title>
+<title>BuyMe: Search Results</title>
 </head>
 <style>
 		h1 {margin-top: 0px; font-size:30px;}
@@ -21,9 +21,12 @@
 	</style>
 	<div class="h1"><h1><a href="LoginSuccess.jsp"> BuyMe </a></h1></div>
 <center><body>	
-<h1 style="font-size:25px"><strong> Questions </strong></h1>
+<h1 style="font-size:25px"><strong> Search Results </strong></h1>
 <br>
-
+<form action="QuestionsPage.jsp">
+	<input type="submit" style="font-size:15px;height:30px;width:125px" value="Reset">
+</form>
+<br>
 		<%
 		try {
 
@@ -35,43 +38,9 @@
 			Statement stmt = con.createStatement();
 			Statement stmt2 = con.createStatement();
 			
-			String username = (String)request.getSession().getAttribute("username");
-			String checkIfUserIsCustomerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
-			ResultSet checkIfUserIsCustomerRepResults = stmt.executeQuery(checkIfUserIsCustomerRepQuery);
-						
-			String submittedQuestion = request.getParameter("ask_question");
-			request.getSession().setAttribute("submittedQuestion", submittedQuestion);
+			String keyword = request.getParameter("keyword");
 			
-			String q = "select * from questions where question = '" + submittedQuestion + "'";
-			ResultSet checkQuestionDup = stmt2.executeQuery(q);
-
-
-			if(submittedQuestion != null && !checkQuestionDup.next()){
-				String insert = "INSERT INTO questions(username, question)"
-						+ "VALUES (?, ?)";
-
-				PreparedStatement ps = con.prepareStatement(insert);
-				
-				ps.setString(1, username);
-				ps.setString(2, submittedQuestion);
-				ps.executeUpdate();
-			}
-			
-			if (!checkIfUserIsCustomerRepResults.next()) {
-				out.println("<form style='text:align=center' action='AskQuestion.jsp'>");
-				out.println("<input type='submit' style='font-size:15px;height:30px;width:180px' value='Ask a Question'>");
-				out.println("</form>");
-				
-				out.println("<br>");
-				out.println("<form style='text:align=center' action='SearchQuestionsPage.jsp'>");
-				out.println("<input type='submit' style='font-size:15px;height:30px;width:180px' value='Search Questions'>");
-				out.println("</form>");
-				
-				
-			}
-			
-			out.println("<br>");
-			String query = "select question, question_id from questions";
+			String query = "select question, question_id from questions where question like '%" + keyword + "%'";
 	        ResultSet result = stmt.executeQuery(query);
     
 	        out.println("<form action='QuestionsAnswersPage.jsp'>");

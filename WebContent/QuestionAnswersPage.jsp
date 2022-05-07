@@ -16,26 +16,24 @@
 		a:visited {color: black; text-decoration: none;}
 		a:hover {color: black; text-decoration: underline;}
 		table {border-collapse: collapse; width: 80%}
-		td { border: 1px solid #dddddd; text-align: center; padding: 11px;}
+		td { font-size:18px; border: 1px solid #dddddd; text-align: center; padding: 11px;}
 	</style>
 	<div class="h1"><h1><a href="LoginSuccess.jsp"> BuyMe </a></h1></div>
 <center><body>	
 	<%
+	
 	//Get the database connection
 	ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection();
 	
 	//Create a SQL statement
 	Statement stmt = con.createStatement();
-	Statement stmt1 = con.createStatement();
+	//Statement stmt2 = con.createStatement();
 	
 	String num = (String)request.getParameter("num");
 	String question = (String)request.getSession().getAttribute("selectedQuestion"+num);
 	String questionID = (String)request.getSession().getAttribute("selectedQuestionID"+num);
 	String username = (String)request.getSession().getAttribute("username");
-	String checkIfUserIsCustomerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
-	ResultSet checkIfUserIsCustomerRepResults = stmt.executeQuery(checkIfUserIsCustomerRepQuery);
-	boolean isUserCustomerRep = checkIfUserIsCustomerRepResults.next();
 	
 	out.println("<tr>");
     out.println("<td><h1><big>" + question + "</big></h1></td>");
@@ -45,7 +43,10 @@
 	out.println("<td><h2><big>Answers</big></h2></td>");
 	out.println("<br>");
 	
-	if (isUserCustomerRep) {
+	String checkIfUserIsCustomerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
+	ResultSet checkIfUserIsCustomerRepResults = stmt.executeQuery(checkIfUserIsCustomerRepQuery);
+	
+	if (checkIfUserIsCustomerRepResults.next()) {
 		out.println("<form style='text:align=center' action='AnswerQuestion.jsp'>");
 		out.println("<input type='submit' style='font-size:15px;height:30px;width:200px' value='Answer Question'>");
 		out.println("</form>");
@@ -55,7 +56,7 @@
 	String query = "select reply, customer_rep_name from replys, customer_reps where question_id = " + questionID; 
 	ResultSet result = stmt.executeQuery(query);
 	out.println("<table>");
-	int size= 0;  
+
 	if (!result.next()) {  
 	  out.println("<h3 style='font-size:25px'><strong> No Answers Yet!</strong></h3>");
 	}
@@ -65,12 +66,12 @@
         while(result.next()) {
         	if (i % 2 != 0) {
         		out.println("<tr>");
-        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'><strong>"+ result.getString(2) + " replied: </strong>" + result.getString(1) + "</a></td>");
+        		out.println("<td><strong>"+ result.getString(2) + " replied: </strong>" + result.getString(1) + "</td>");
         		out.println("</tr>");
         	}
         	else {
         		out.println("<tr>");
-        		out.println("<td><a style='font-size:18px' href='BuyPage.jsp?num="+ i + "'><strong>"+ result.getString(2) + "replied: </strong>" + result.getString(1) + "</a></td>");
+        		out.println("<td><strong>"+ result.getString(2) + "replied: </strong>" + result.getString(1) + "</td>");
         		out.println("</tr>");
         	}
         	i++;

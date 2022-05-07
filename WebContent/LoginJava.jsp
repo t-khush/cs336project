@@ -38,15 +38,13 @@
         }
         
         else if(inDb) {
-        	request.getSession().setAttribute("userisCustomerRep", "false");
     		response.sendRedirect("LoginSuccess.jsp");
         }
         else{
         	// check if user is a customer rep
-        	String customerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "'";
+        	String customerRepQuery = "select * from customer_reps where customer_rep_name = '" + username + "' and customer_rep_password = '" + password + "'";
         	ResultSet customerRepQueryResult = stmt.executeQuery(customerRepQuery);
-        	if (result.first()) {
-        		request.getSession().setAttribute("userisCustomerRep", "true");
+        	if (customerRepQueryResult.first()) {
         		response.sendRedirect("CustomerRepHomePage.jsp");
         	}
         	else {

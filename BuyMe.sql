@@ -110,8 +110,9 @@ DROP TABLE IF EXISTS `customer_reps`;
 CREATE TABLE `customer_reps` (
   `customer_rep_id` int NOT NULL AUTO_INCREMENT,
   `customer_rep_name` varchar(30) DEFAULT NULL,
+  `customer_rep_password` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`customer_rep_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,6 +121,7 @@ CREATE TABLE `customer_reps` (
 
 LOCK TABLES `customer_reps` WRITE;
 /*!40000 ALTER TABLE `customer_reps` DISABLE KEYS */;
+INSERT INTO `customer_reps` VALUES (1,'customer rep 1',NULL),(2,'prathik','hello');
 /*!40000 ALTER TABLE `customer_reps` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +174,7 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`question_id`),
   KEY `username` (`username`),
   CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +183,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'plolla','What is BuyMe');
+INSERT INTO `questions` VALUES (1,'plolla','What is BuyMe'),(2,'hello','How do I sell an item?');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +204,7 @@ CREATE TABLE `replys` (
   KEY `question_id` (`question_id`),
   CONSTRAINT `replys_ibfk_1` FOREIGN KEY (`customer_rep_id`) REFERENCES `customer_reps` (`customer_rep_id`),
   CONSTRAINT `replys_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,6 +213,7 @@ CREATE TABLE `replys` (
 
 LOCK TABLES `replys` WRITE;
 /*!40000 ALTER TABLE `replys` DISABLE KEYS */;
+INSERT INTO `replys` VALUES (1,'Buy Me is a platform like Ebay where you put up items for auction',1,1);
 /*!40000 ALTER TABLE `replys` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +237,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('e','e'),('hey','hey'),('khush','khush'),('name','name'),('name1','name1'),('plolla','hello'),('random','random'),('seller','seller');
+INSERT INTO `user` VALUES ('admin','admin'),('e','e'),('hello','hello'),('hey','hey'),('khush','khush'),('name','name'),('name1','name1'),('plolla','hello'),('random','random'),('seller','seller');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,4 +274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-04 20:58:00
+-- Dump completed on 2022-05-06 21:56:25
