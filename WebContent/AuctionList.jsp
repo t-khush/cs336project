@@ -44,6 +44,7 @@ if (!checkIfUserIsCustomerRepResults.next()) {
 	
 	out.println("<div class='button-container'>");
 	out.println("<form style='text:align=center' action='FilterPage.jsp'>");
+	out.println("<input type='submit' style='font-size:15px;height:30px;width:200px' value='Filter'>");
 	out.println("</form>");
 	out.println("<br>");
 
