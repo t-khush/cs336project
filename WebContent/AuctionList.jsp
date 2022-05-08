@@ -82,7 +82,7 @@ if (!checkIfUserIsCustomerRepResults.next()) {
 	            out.println("</div>"); -->
 <br>
 		<%
-		try {
+		//try {
 
 			//Get the database connection
 			/*
@@ -159,7 +159,7 @@ if (!checkIfUserIsCustomerRepResults.next()) {
 				ResultSet getReservePriceResult2 = stmt4.executeQuery(getReservePrice2); 
 				if(getReservePriceResult2.next() && getReservePriceResult2.getString(1)!=null){
 					float price = Float.parseFloat(getReservePriceResult2.getString(1)); 
-					String lastBidPriceQuery = "SELECT current_bid FROM bid_history WHERE item_id = " + soldItemResults.getString(1)+ " order by current_bid desc limit 1";
+					String lastBidPriceQuery = "SELECT current_bid FROM bid_history WHERE item_id = " + allBoughtItemsResult.getString(1)+ " order by current_bid desc limit 1";
 					ResultSet lastBidPriceResult = stmt4.executeQuery(lastBidPriceQuery); 
 					if(lastBidPriceResult.next()){
 						float lastBid = Float.parseFloat(lastBidPriceResult.getString(1)); 
@@ -266,11 +266,12 @@ if (!checkIfUserIsCustomerRepResults.next()) {
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			
-			
+		/*	
 		} catch (Exception ex) {
 			out.print(ex);
 			out.print("insert failed");
 		}
+		*/
 	%>
 	<form action="LoginSuccess.jsp">
 		<input type=hidden style="font-size:15px;height:30px;width:200px" value="Go back to main page">
