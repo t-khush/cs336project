@@ -39,7 +39,6 @@ CREATE TABLE `alerts` (
 
 LOCK TABLES `alerts` WRITE;
 /*!40000 ALTER TABLE `alerts` DISABLE KEYS */;
-INSERT INTO `alerts` VALUES (43,'You successfully bought ipad pro 12 inch.','hello'),(44,'You successfully bought m2 2024 mack.','hello'),(45,'Your item named home phone was sold.','hello'),(1,'A user bid higher than you on iPhone','khush'),(2,'A user bid higher than you on iPad Pro','khush'),(7,'You successfully bought use this for no initial bid .','khush'),(8,'You successfully bought 3.','khush'),(10,'You successfully bought phone user this .','khush'),(11,'You successfully bought laptop502.','khush'),(12,'You successfully bought hey.','khush'),(13,'You successfully bought manual automatic bid .','khush'),(14,'A user bid higher than your maximum bid cap on the item Tab','khush'),(34,'A phone you\'re interested in named phone test alert was just posted!','khush'),(36,'A phone you\'re interested in named phone was just posted!','khush'),(39,'A laptop you\'re interested in named M1 Macbook Pro was just posted!','khush'),(40,'A phone you\'re interested in named phjone was just posted!','khush'),(42,'A phone you\'re interested in named M1 Mackbook was just posted!','khush'),(44,'A laptop you\'re interested in named m2 2024 mack was just posted!','khush'),(45,'A phone you\'re interested in named home phone was just posted!','khush'),(46,'A phone you\'re interested in named android was just posted!','khush'),(1,'You successfully bought iPhone.','name1'),(42,'You successfully bought M1 Mackbook.','name1'),(1,'Your item named iPhone was sold.','plolla'),(42,'Your item named M1 Mackbook was sold.','plolla'),(43,'Your item named ipad pro 12 inch was sold.','plolla'),(44,'Your item named m2 2024 mack was sold.','plolla'),(45,'You successfully bought home phone.','plolla'),(46,'You successfully bought android.','plolla'),(6,'A user bid higher than you on galaxy','random'),(13,'A user bid higher than you on manual automatic bid ','random'),(14,'A user bid higher than you on Tab','random'),(14,'You successfully bought Tab.','random'),(7,'Your item named use this for no initial bid  was sold.','seller'),(8,'Your item named 3 was sold.','seller'),(10,'Your item named phone user this  was sold.','seller'),(11,'Your item named laptop502 was sold.','seller'),(13,'Your item named manual automatic bid  was sold.','seller'),(14,'Your item named Tab was sold.','seller');
 /*!40000 ALTER TABLE `alerts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +67,6 @@ CREATE TABLE `automatic_bid` (
 
 LOCK TABLES `automatic_bid` WRITE;
 /*!40000 ALTER TABLE `automatic_bid` DISABLE KEYS */;
-INSERT INTO `automatic_bid` VALUES (1,'khush',1200.00,10.00),(1,'hey',1250.00,10.00),(5,'khush',10.00,2.00),(6,'khush',10.00,4.00),(6,'khush',50.00,5.00),(7,'khush',10.00,1.00),(8,'khush',100.00,3.00),(1,'name2',2200.00,30.00),(2,'name1',800.00,40.00),(2,'khush',900.00,10.00),(11,'khush',5.00,1.00),(11,'khush',10000.00,242.00),(12,'khush',10.00,2.00),(12,'random',560.00,6.00),(13,'khush',1000.00,10.00),(14,'khush',5.00,2.00);
 /*!40000 ALTER TABLE `automatic_bid` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +94,6 @@ CREATE TABLE `bid_history` (
 
 LOCK TABLES `bid_history` WRITE;
 /*!40000 ALTER TABLE `bid_history` DISABLE KEYS */;
-INSERT INTO `bid_history` VALUES (42,3000.00,'name1'),(43,2000.00,'hello'),(44,4000.00,'hello'),(45,400.00,'plolla'),(46,500.00,'plolla');
 /*!40000 ALTER TABLE `bid_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +146,7 @@ CREATE TABLE `customer_reps` (
 
 LOCK TABLES `customer_reps` WRITE;
 /*!40000 ALTER TABLE `customer_reps` DISABLE KEYS */;
-INSERT INTO `customer_reps` VALUES (1,'customer rep 1',NULL),(2,'prathik','hello');
+INSERT INTO `customer_reps` VALUES (1,'rep','rep');
 /*!40000 ALTER TABLE `customer_reps` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +181,6 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'iPhone','phone','good iphone','plolla',200.00,10.00,1200.00,'2022-05-02 18:31:00',1,NULL),(2,'iPad Pro','tablet','hello this is good ipad','plolla',555.00,4.00,2000.00,'2022-05-04 18:32:00',1,NULL),(3,'iPhone 2','phone','this is good iphone','plolla',333.00,3.00,333.00,'2022-04-28 19:54:00',1,NULL),(4,'iphone use thies','phone','test',NULL,1.00,1.00,1.00,'2022-05-07 21:02:00',0,NULL),(5,'a','phone','a phone','seller',1.00,1.00,5.00,'2022-05-07 21:03:00',0,NULL),(6,'galaxy','laptop','galaxy','seller',1.00,1.00,50.00,'2022-05-07 21:44:00',0,NULL),(7,'use this for no initial bid ','phone','na','seller',1.00,1.00,2.00,'2022-04-30 21:52:00',1,NULL),(8,'3',NULL,'name first manual, khush auto, name manual','seller',1.00,1.00,9.00,'2022-04-30 21:53:00',1,NULL),(9,'iPhone','phone','this is a good iphone ','plolla',222.00,2.00,222.00,'2022-05-01 22:06:00',1,NULL),(10,'phone user this ','phone','hey','seller',1.00,1.00,2.00,'2022-05-01 22:59:00',1,NULL),(11,'laptop502','laptop','hey buy','seller',1.00,1.00,2.00,'2022-05-03 00:10:00',1,NULL),(12,'hey','tablet','hey','seller',1.00,1.00,3.00,'2022-05-03 12:15:00',1,NULL),(13,'manual automatic bid ','tablet','','seller',1.00,1.00,15.00,'2022-05-02 00:22:00',1,NULL),(14,'Tab','tablet','Manual then Automatic','seller',1.00,1.00,1100.00,'2022-05-02 14:59:00',1,NULL),(16,'hey','laptop','','seller',1.00,1.00,1.00,'2022-05-03 01:56:00',1,NULL),(19,'test',NULL,'','seller',1.00,1.00,1.00,'2022-05-03 01:58:00',1,NULL),(21,'test2',NULL,'','seller',1.00,1.00,1.00,'2022-05-03 01:57:00',1,NULL),(23,'hey','tablet','hey','seller',1.00,1.00,1.00,'2022-05-03 01:03:00',1,NULL),(25,'testing','tablet','','seller',1.00,1.00,1.00,'2022-05-03 02:03:00',1,NULL),(27,'testing','laptop','','seller',1.00,1.00,1.00,'2022-05-03 03:03:00',1,NULL),(28,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL),(29,'testengie','tablet','e','seller',1.00,1.00,1.00,'2022-05-03 04:08:00',1,NULL),(30,'e','tablet','','seller',1.00,1.00,1.00,'2022-05-03 05:09:00',1,NULL),(31,'rgr','tablet','','seller',1.00,1.00,1.00,'2022-05-03 05:10:00',1,NULL),(32,'iphone alert type','phone','','seller',1.00,1.00,1.00,'2022-05-03 04:16:00',1,NULL),(33,'jte','phone','','seller',1.00,1.00,1.00,'2022-05-03 03:15:00',1,NULL),(34,'phone test alert','phone','','seller',1.00,1.00,1.00,'2022-05-03 02:19:00',1,NULL),(35,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL),(36,'phone','phone','ddd','plolla',400.00,4.00,400.00,'2022-05-13 17:34:00',0,NULL),(37,NULL,NULL,NULL,'plolla',NULL,NULL,NULL,NULL,0,NULL),(38,'ipad','tablet','dd','plolla',100.00,4.00,150.00,'2022-05-17 17:39:00',0,NULL),(39,'M1 Macbook Pro','laptop','new macbook and very good','plolla',1000.00,50.00,1000.00,'2022-05-02 05:43:00',1,NULL),(40,'phjone','phone','dsdsds','plolla',100.00,10.00,100.00,'2022-05-04 05:45:00',1,NULL),(41,'mike','tablet','mike','plolla',1000.00,10.00,1000.00,'2022-05-11 05:42:00',0,NULL),(42,'M1 Mackbook','phone','ggg','plolla',2000.00,100.00,3000.00,'2022-05-07 05:48:00',1,NULL),(43,'ipad pro 12 inch','tablet','good ipad','plolla',1500.00,10.00,2000.00,'2022-05-07 05:59:00',1,NULL),(44,'m2 2024 mack','laptop','mack','plolla',3000.00,10.00,4000.00,'2022-05-07 06:10:00',1,NULL),(45,'home phone','phone','ggg','hello',300.00,10.00,400.00,'2022-05-07 06:20:00',1,NULL),(46,'android','phone','meh','hello',400.00,10.00,500.00,'2022-05-07 06:27:00',1,NULL);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +207,6 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'plolla','What is BuyMe'),(2,'hello','How do I sell an item?');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +236,6 @@ CREATE TABLE `replys` (
 
 LOCK TABLES `replys` WRITE;
 /*!40000 ALTER TABLE `replys` DISABLE KEYS */;
-INSERT INTO `replys` VALUES (1,'Buy Me is a platform like Ebay where you put up items for auction',1,1),(2,'Hello you can sell an item by clicking the sell button on your home page. You can sell phones, tablets, and laptops!',2,2),(3,'hello',2,2),(4,'BuyMe is a great site',2,1),(5,'hello',2,1),(6,'BuyMe is our CS 336 Project',2,1);
 /*!40000 ALTER TABLE `replys` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +259,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','admin'),('e','e'),('hello','hello'),('hey','hey'),('khush','khush'),('name1','name1'),('name2','name'),('plolla','hello'),('random','random'),('seller','seller');
+INSERT INTO `user` VALUES ('admin','admin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,7 +285,6 @@ CREATE TABLE `user_interests` (
 
 LOCK TABLES `user_interests` WRITE;
 /*!40000 ALTER TABLE `user_interests` DISABLE KEYS */;
-INSERT INTO `user_interests` VALUES ('laptop','khush'),('phone','khush');
 /*!40000 ALTER TABLE `user_interests` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -304,4 +297,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-07  6:29:18
+-- Dump completed on 2022-05-07 21:15:38

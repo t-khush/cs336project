@@ -36,10 +36,11 @@
 			String initBid = request.getParameter("init_bid");
 			String bidInc = request.getParameter("bid_inc");
 			String durAuction = request.getParameter("dur_auction");
+			String reservePrice = request.getParameter("res_price");
 			 
 			//Make an insert statement for the Sells table: 
-			String insert = "INSERT INTO items(name, type, description, username, starting_bid, bid_increment, current_price, sell_by_date)"
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			String insert = "INSERT INTO items(name, type, description, username, starting_bid, bid_increment, current_price, sell_by_date, reserve_price)"
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = con.prepareStatement(insert);
 
@@ -52,6 +53,7 @@
 			ps.setString(6, bidInc);
 			ps.setString(7, initBid);
 			ps.setString(8, durAuction);
+			ps.setString(9, reservePrice);
 			ps.executeUpdate();
 			out.print("Item set for auction!");
 			
