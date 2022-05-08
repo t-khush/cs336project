@@ -74,10 +74,10 @@
 			}
 			else {
 				if (!minPrice.equals("") && !maxPrice.equals("")) {
-					query = "select name, item_id from items where bought is not true and type = '" + category + "' and  current_price >= " + minPrice + " and currentPrice <= " + maxPrice;
+					query = "select name, item_id from items where bought is not true and type = '" + category + "' and  current_price >= " + minPrice + " and current_price <= " + maxPrice;
 				}
 				else if (minPrice.equals("") && !maxPrice.equals("")) {
-					query = "select name, item_id from items where bought is not true and type = '" + category + "' andand currentPrice <= " + maxPrice;
+					query = "select name, item_id from items where bought is not true and type = '" + category + "' and current_price <= " + maxPrice;
 				}
 				else if (!minPrice.equals("") && maxPrice.equals("")) {
 					query = "select name, item_id from items where bought is not true and type = '" + category + "' and current_price >= " + minPrice;
