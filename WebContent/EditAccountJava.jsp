@@ -51,10 +51,11 @@
 		        	}
 		        	else { 
 		        		
-		        		String insert = "update user set username = ? where username = ?";
+		        		String insert = "update user set username = ?, password = ? where username = ?";
 						PreparedStatement ps = con.prepareStatement(insert);
 						ps.setString(1, newUser);
-						ps.setString(2, oldUser);
+						ps.setString(2, newPass);
+						ps.setString(3, oldUser);
 						ps.executeUpdate();
 						
 		        	out.print("Account Edited!");

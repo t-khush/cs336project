@@ -111,26 +111,14 @@
     	        }
     	        out.println("<table>");
     	        out.println("</form>");
-    		}
-	        
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
 			
-			
+    		}
 		} catch (Exception ex) {
 			out.print(ex);
 			out.print("insert failed");
 		}
 	%>
-	<form action="LoginSuccess.jsp">
-		<input type=hidden style="font-size:15px;height:30px;width:200px" value="Go back to main page">
-	</form>
-	<br><br>
-	<form action="LoginSuccess.jsp">
-		<input type="submit" style="font-size:15px;height:30px;width:200px" value="Go back to main page">
-	</form>
-
-<br><br>
-<br></br>
 </body></center>
 </html>

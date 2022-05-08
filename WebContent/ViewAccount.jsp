@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>BuyMe: Bid History</title>
+<title>BuyMe: View Account</title>
 </head>
 <style>
 		h1 {margin-top: 0px; font-size: 30px;}
