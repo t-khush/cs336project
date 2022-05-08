@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for macos11.6 (x86_64)
 --
 -- Host: localhost    Database: BuyMe
 -- ------------------------------------------------------
@@ -39,7 +39,6 @@ CREATE TABLE `alerts` (
 
 LOCK TABLES `alerts` WRITE;
 /*!40000 ALTER TABLE `alerts` DISABLE KEYS */;
-INSERT INTO `alerts` VALUES (48,'You successfully bought iPad Pro.','diff'),(47,'Your item named iPhone 13 was sold.','fady'),(48,'A user bid higher than you on iPad Pro','fady'),(49,'Your item named iPhone 12 was sold.','fady'),(50,'You successfully bought Macbook.','fady'),(47,'You successfully bought iPhone 13.','new'),(48,'Your item named iPad Pro was sold.','new'),(49,'You successfully bought iPhone 12.','new'),(50,'Your item named Macbook was sold.','new'),(58,'A phone you\'re interested in named iPhone 11 was just posted!','new');
 /*!40000 ALTER TABLE `alerts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +67,6 @@ CREATE TABLE `automatic_bid` (
 
 LOCK TABLES `automatic_bid` WRITE;
 /*!40000 ALTER TABLE `automatic_bid` DISABLE KEYS */;
-INSERT INTO `automatic_bid` VALUES (48,'diff',900.00,50.00);
 /*!40000 ALTER TABLE `automatic_bid` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +94,6 @@ CREATE TABLE `bid_history` (
 
 LOCK TABLES `bid_history` WRITE;
 /*!40000 ALTER TABLE `bid_history` DISABLE KEYS */;
-INSERT INTO `bid_history` VALUES (47,600.00,'new'),(48,650.00,'fady'),(48,700.00,'diff'),(48,750.00,'fady'),(48,800.00,'diff'),(49,600.00,'new'),(50,1050.00,'fady'),(51,1100.00,'new'),(52,300.00,'fady');
 /*!40000 ALTER TABLE `bid_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +122,6 @@ CREATE TABLE `bought_items` (
 
 LOCK TABLES `bought_items` WRITE;
 /*!40000 ALTER TABLE `bought_items` DISABLE KEYS */;
-INSERT INTO `bought_items` VALUES (47,'phone',600.00,'new'),(48,'tablet',800.00,'diff'),(49,'phone',600.00,'new'),(50,'laptop',1050.00,'fady');
 /*!40000 ALTER TABLE `bought_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +146,7 @@ CREATE TABLE `customer_reps` (
 
 LOCK TABLES `customer_reps` WRITE;
 /*!40000 ALTER TABLE `customer_reps` DISABLE KEYS */;
-INSERT INTO `customer_reps` VALUES (1,'rep','rep'),(3,'cusrep','cusrep');
+INSERT INTO `customer_reps` VALUES (1,'rep','rep');
 /*!40000 ALTER TABLE `customer_reps` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +181,6 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (47,'iPhone 13','phone','Brand New','fady',500.00,10.00,600.00,'2022-05-07 20:43:00',1,NULL),(48,'iPad Pro','tablet','Used, but works well','new',600.00,20.00,800.00,'2022-05-07 20:48:00',1,NULL),(49,'iPhone 12','phone','New','fady',500.00,20.00,600.00,'2022-05-07 20:51:00',1,NULL),(50,'Macbook','laptop','ANything','new',900.00,50.00,1050.00,'2022-05-07 21:18:00',1,NULL),(51,'MacBook Pro Max','laptop','Brand New','fady',1000.00,50.00,1100.00,'2022-05-07 21:35:00',1,1400.00),(52,'iPhone 5','phone','Used','new',200.00,10.00,300.00,'2022-05-07 21:39:00',1,500.00),(55,'MacBook Air','laptop','MacBook Air','fady',600.00,20.00,600.00,'2022-05-25 21:42:00',0,800.00),(57,'iPad 5th Gen','tablet','iPad','new',400.00,20.00,400.00,'2022-05-25 21:44:00',0,700.00),(58,'iPhone 11','phone','iPhone 11','fady',200.00,50.00,200.00,'2022-05-19 12:51:00',0,400.00);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +207,6 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (3,'new','Why is the iPhone bid not working?'),(4,'new','What?');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +236,6 @@ CREATE TABLE `replys` (
 
 LOCK TABLES `replys` WRITE;
 /*!40000 ALTER TABLE `replys` DISABLE KEYS */;
-INSERT INTO `replys` VALUES (7,'What is what',3,4),(8,'What are you talking about?',3,4),(9,'What have you tried so far?',3,3);
 /*!40000 ALTER TABLE `replys` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +259,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','admin'),('diff','diff'),('fady','fady'),('new','new');
+INSERT INTO `user` VALUES ('admin','admin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,7 +285,6 @@ CREATE TABLE `user_interests` (
 
 LOCK TABLES `user_interests` WRITE;
 /*!40000 ALTER TABLE `user_interests` DISABLE KEYS */;
-INSERT INTO `user_interests` VALUES ('phone','new'),('tablet','new');
 /*!40000 ALTER TABLE `user_interests` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -305,4 +297,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-07 22:31:19
+-- Dump completed on 2022-05-07 22:48:14
